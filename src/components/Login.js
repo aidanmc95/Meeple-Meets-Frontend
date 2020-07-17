@@ -22,7 +22,6 @@ class Login extends React.Component {
     api.auth.login(this.state.fields)
     .then(res => {
       this.props.onLogin(res)
-      console.log(this.props)
       this.props.history.push('/')
     })
   };

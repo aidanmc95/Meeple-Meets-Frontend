@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./Login";
 import { api } from "../services/api";
-import { Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 class App extends React.Component {
   constructor() {
@@ -36,16 +36,13 @@ class App extends React.Component {
   };
 
   render() {
-    console.log('test, test')
     return (
       <div>
         <div className="ui container grid">
           <div id="content" className="sixteen wide column">
-            <Route
-              exact
-              path="/login"
-              render={props => <Login {...props} onLogin={this.login} />}
-            />
+            <Router>
+              <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>
+            </Router>
           </div>
         </div>
       </div>
