@@ -1,10 +1,13 @@
 import React from 'react';
-import {api} from '../services/api'
-class Login extends React.Component {
+import {api} from '../../services/api'
+import { Link } from 'react-router-dom'
+import './style.css'
+
+class SignUp extends React.Component {
   constructor() {
     super();
     this.state = {
-      error: false,
+      error: true,
       fields: {
         username: '',
         password: ''
@@ -19,7 +22,8 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    api.auth.login(this.state.fields)
+    console.log(this.state.fields)
+    api.auth.signUp(this.state.fields)
     .then(res => {
       this.props.onLogin(res)
       this.props.history.push('/')
@@ -30,12 +34,13 @@ class Login extends React.Component {
    
     const { fields } = this.state;
     return (
-      <div>
-        {this.state.error ? <h1>Try again...</h1> : null}
+      <div className="form">
+        <h1>Expand your  board game group.</h1>
+        <h2>Sign up for Meeple Meets and make new friends!</h2>
         <div className="ui form">
           <form onSubmit={this.handleSubmit}>
             <div className="ui field">
-              <label>Username</label>
+              <label>Username</label><br/>
               <input
                 name="username"
                 placeholder="username"
@@ -44,7 +49,7 @@ class Login extends React.Component {
               />
             </div>
             <div className="ui field">
-              <label>Password</label>
+              <label>Password</label><br/>
               <input
                 name="password"
                 type="password"
@@ -53,14 +58,16 @@ class Login extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit" className="ui basic green button">
-              Login
+            <button type="submit" className="submit">
+              SignUp
             </button>
           </form>
+          <p>Have an account? <Link className="link" to="/login">Login Here!</Link></p>
         </div>
+        {this.state.error ? <h1>Try again...</h1> : null}
       </div>
     );
   }
 }
 
-export default Login;
+export default SignUp;

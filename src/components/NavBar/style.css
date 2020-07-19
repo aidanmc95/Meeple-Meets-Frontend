@@ -1,24 +1,42 @@
 .navbar {
     background-color: #2F2E41;
     overflow: hidden;
+    height: 68px;
 }
 
 .navbutton {
-    float: left;
+    float: right;
     color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
+    text-align: right;
+    padding: 10px;
     text-decoration: none;
-    font-size: 17px;
-    font-family: "Times New Roman";
+    
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    font-variant: small-caps;
+    
+    margin-right: 14px;
+    margin-top: 14px;
+    color: #FFA000;
 }
 
 .navbutton:hover {
-    background-color: #ddd;
-    color: black;
+    border-bottom: 3px solid #FFA000; 
 }
 
 .navbutton:active {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #59576C;
+    color: #ffd149;
+    border-bottom: 3px solid #ffd149; 
+}
+
+.navlogo {
+    width: 86px;
+    height: 32px;
+    float: left;
+    margin-left: 18px;
+    margin-top: 18px;
 }

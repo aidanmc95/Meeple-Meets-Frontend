@@ -1,10 +1,13 @@
 import React from 'react';
-import {api} from '../services/api'
-class SignUp extends React.Component {
+import {api} from '../../services/api'
+import { Link } from 'react-router-dom'
+import './style.css'
+
+class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      error: false,
+      error: true,
       fields: {
         username: '',
         password: ''
@@ -19,11 +22,10 @@ class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.fields)
-    api.auth.signUp(this.state.fields)
+    api.auth.login(this.state.fields)
     .then(res => {
       this.props.onLogin(res)
-      this.props.history.push('/')
+      this.props.history.push('/profile')
     })
   };
 
@@ -31,12 +33,13 @@ class SignUp extends React.Component {
    
     const { fields } = this.state;
     return (
-      <div>
-        {this.state.error ? <h1>Try again...</h1> : null}
+      <div className="form">
+        <h1>Meeple Meets</h1>
+        <h2>Log In and make new friends!</h2>
         <div className="ui form">
           <form onSubmit={this.handleSubmit}>
             <div className="ui field">
-              <label>Username</label>
+              <label>Username</label><br/>
               <input
                 name="username"
                 placeholder="username"
@@ -45,7 +48,7 @@ class SignUp extends React.Component {
               />
             </div>
             <div className="ui field">
-              <label>Password</label>
+              <label>Password</label><br/>
               <input
                 name="password"
                 type="password"
@@ -55,13 +58,15 @@ class SignUp extends React.Component {
               />
             </div>
             <button type="submit" className="ui basic green button">
-              SignUp
+              Login
             </button>
           </form>
         </div>
+        <p>Don't have an account? <Link className="link" to="/signup">Sign Up here!</Link></p>
+        {this.state.error ? <h1>Try again...</h1> : null}
       </div>
     );
   }
 }
 
-export default SignUp;
+export default Login;

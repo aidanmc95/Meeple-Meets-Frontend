@@ -1,6 +1,10 @@
 import React from "react";
-import Login from "./Login";
-import SignUp from "./SignUp";
+import Login from "./Login/Login";
+import SignUp from "./SignUp/SignUp";
+import Profile from "./Profile/Profile";
+import Meets from "./Meets/Meets"
+import MeetsForm from "./MeetsForm/MeetsForm"
+import Boardgames from "./Boardgames/Boardgames"
 import NavBar from "./NavBar/NavBar"
 import { api } from "../services/api";
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
@@ -43,10 +47,15 @@ class App extends React.Component {
         <div className="ui container grid">
           <div id="content" className="sixteen wide column">
             <Router>
-              <NavBar />
+              <NavBar onLogout={this.logout} />
               <Switch>
+                <Route exact path="/profile" render={props => <Profile {...props} />} />
+                <Route exact path="/meets" render={props => <Meets {...props} />} />
+                <Route exact path="/meets/create" render={props => <MeetsForm {...props} />} />
+                <Route exact path="/boardgames" render={props => <Boardgames {...props} />} />
                 <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>
                 <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>
+                <Redirect to="/login"/>
               </Switch>
             </Router>
           </div>
