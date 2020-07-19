@@ -1,5 +1,7 @@
 import React from "react";
 import Login from "./Login";
+import SignUp from "./SignUp";
+import NavBar from "./NavBar/NavBar"
 import { api } from "../services/api";
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
@@ -41,7 +43,11 @@ class App extends React.Component {
         <div className="ui container grid">
           <div id="content" className="sixteen wide column">
             <Router>
-              <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>
+              <NavBar />
+              <Switch>
+                <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>
+                <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>
+              </Switch>
             </Router>
           </div>
         </div>
