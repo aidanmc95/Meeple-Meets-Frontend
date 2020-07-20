@@ -46,6 +46,7 @@ input {
     font-weight: normal;
     font-size: 16px;
     line-height: 20px;
+    width: 100%;
 
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
 

@@ -1,4 +1,5 @@
 const API_ROOT = `http://localhost:3000/api/v1`;
+const NON_AUTH_API_ROOT = `http://localhost:3000`;
 
 const token = () => localStorage.getItem("token");
 
@@ -40,11 +41,19 @@ const signUp = data => {
   })
   .then(res => res.json())
 };
+
+const getBoardgames = () => {
+  return fetch(`${NON_AUTH_API_ROOT}/boardgames`)
+  .then(res => res.json())
+}
   
 export const api = {
   auth: {
     login,
     getCurrentUser,
     signUp
+  },
+  nonauth: {
+    getBoardgames
   }
 };
