@@ -41,6 +41,7 @@ class Boardgame extends React.Component {
                     <h3>Board Game</h3>
                     <h1>{this.state.boardgame.title}</h1>
                     <h5>{`BGG Rank #${this.state.boardgame.BGGrank}`}</h5>
+                    <a href="https://boardgamegeek.com/boardgame/174430">BGG Page</a>
                 </div>
                 <div className="about">
                     <h2>About this Game</h2>

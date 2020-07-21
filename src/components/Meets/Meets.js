@@ -32,7 +32,7 @@ class Meets extends React.Component {
                 </div><br/><br/>
                 <h5>Meeple Meets connects board game groups, so you'll always have a full table.</h5>
                 <div className="filterbar"></div>
-                <h5>Can't find what you are looking for? <Link to="/meets/create">Host A Meet</Link></h5>
+                {localStorage.getItem("token") ? <h5>Can't find what you are looking for? <Link to="/meets/create">Host A Meet</Link></h5>  : null}
                 {this.loadMeets()}
                 <div className="Map"></div>
             </div>

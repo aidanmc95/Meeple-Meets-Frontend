@@ -10,11 +10,11 @@ const NavBar = (props) => {
                     <img src={process.env.PUBLIC_URL + '/For_Dark_Bg.png'} alt="Logo" />
                 </div>
             </Link>
-            <Link className="navbutton" to="/login" onClick={() => props.onLogout()}>Log Out</Link>
-            <Link className="navbutton" to="/login">Login</Link>
-            <Link className="navbutton" to="/signup">Sign Up</Link>
-            <Link className="navbutton" to="/profile">Profile</Link>
-            <Link className="navbutton" to="/meets/create">Host A Meet</Link>
+            {localStorage.getItem("token") ? <Link className="navbutton" to="/login" onClick={() => props.onLogout()}>Log Out</Link> : null}
+            {localStorage.getItem("token") ? null : <Link className="navbutton" to="/login">Login</Link>}
+            {localStorage.getItem("token") ? null : <Link className="navbutton" to="/signup">Sign Up</Link>}
+            {localStorage.getItem("token") ? <Link className="navbutton" to="/profile">Profile</Link> : null}
+            {localStorage.getItem("token") ? <Link className="navbutton" to="/meets/create">Host A Meet</Link> : null}
             <Link className="navbutton" to="/meets">Find A Meet</Link>
             <Link className="navbutton" to="/boardgames">Boardgames</Link>
         </div>
