@@ -23,7 +23,6 @@ class Boardgame extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.boardgameid)
         api.nonauth.getBoardgame(this.props.match.params.boardgameid)
         .then(resp => this.setState(prevState => ({
             boardgame: {

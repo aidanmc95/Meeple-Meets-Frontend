@@ -61,12 +61,18 @@ const getMeet = (id) => {
   return fetch(`${NON_AUTH_API_ROOT}/meets/${id}`)
   .then(res => res.json())
 }
+
+const getUser = (id) => {
+  return fetch(`${API_ROOT}/users/${id}`)
+  .then(res => res.json())
+}
   
 export const api = {
   auth: {
     login,
     getCurrentUser,
-    signUp
+    signUp,
+    getUser
   },
   nonauth: {
     getBoardgames,

@@ -16,7 +16,7 @@ class App extends React.Component {
     super();
     this.state = {
       auth: {
-        user: {}
+        user: null
       }
     };
   }
@@ -29,7 +29,6 @@ class App extends React.Component {
         this.setState({auth:{...this.state.auth, user: resp.user}})
       })
     }
-
   }
 
   login = data => { 
@@ -39,7 +38,7 @@ class App extends React.Component {
 
   logout = () => {
     localStorage.removeItem("token")
-    this.setState({auth:{user:{}}})
+    this.setState({auth:{user:null}})
   };
 
   render() {
@@ -50,15 +49,16 @@ class App extends React.Component {
             <Router>
               <NavBar onLogout={this.logout} />
               <Switch>
-                <Route exact path="/profile" render={props => <Profile {...props} />} />
+                {this.state.auth.user ? <Route exact path="/profile" render={props => <Profile {...props} user={this.state.auth.user}/>} /> : null}
+                <Route exact path="/profile/:profileid" render={props => <Profile {...props} user={this.state.auth.user}/>} />
                 <Route exact path="/meets" render={props => <Meets {...props} />} />
-                <Route exact path="/meets/create" render={props => <MeetsForm {...props} />} />
+                {this.state.auth.user ? <Route exact path="/meets/create" render={props => <MeetsForm {...props} />} /> : null}
                 <Route exact path="/meets/:meetid" render={props => <Meet {...props} />} />
                 <Route exact path="/boardgames" render={props => <Boardgames {...props} />} />
                 <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} />} />
-                <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>
-                <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>
-                <Redirect to="/login"/>
+                {this.state.auth.user ? null : <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>}
+                {this.state.auth.user ? null : <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>}
+                {this.state.auth.user ? <Redirect to="/profile"/> : <Redirect to="/login"/>}
               </Switch>
             </Router>
           </div>
