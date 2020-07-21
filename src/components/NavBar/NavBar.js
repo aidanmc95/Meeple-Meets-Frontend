@@ -14,8 +14,8 @@ const NavBar = (props) => {
             <Link className="navbutton" to="/login">Login</Link>
             <Link className="navbutton" to="/signup">Sign Up</Link>
             <Link className="navbutton" to="/profile">Profile</Link>
-            <Link className="navbutton" to="/meets">Meets</Link>
-            <Link className="navbutton" to="/meets/create">Create Meet</Link>
+            <Link className="navbutton" to="/meets/create">Host A Meet</Link>
+            <Link className="navbutton" to="/meets">Find A Meet</Link>
             <Link className="navbutton" to="/boardgames">Boardgames</Link>
         </div>
     )
