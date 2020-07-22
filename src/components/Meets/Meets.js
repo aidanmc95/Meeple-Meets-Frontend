@@ -7,15 +7,18 @@ import './style.css'
 class Meets extends React.Component {
 
     state = {
-        meets: []
+        meets: [],
+        location: null,
+        datehigh: null,
+        datelow: null
     }
 
     componentDidMount() {
-        api.nonauth.getMeets()
+        api.auth.getMeets()
         .then(resp => {
             console.log(resp)
             this.setState({
-                meets: resp
+                meets: resp,
             })
         })
     }
@@ -31,7 +34,9 @@ class Meets extends React.Component {
                     <img src={process.env.PUBLIC_URL + '/ForLightBg.png'} alt="Logo" />
                 </div><br/><br/>
                 <h5>Meeple Meets connects board game groups, so you'll always have a full table.</h5>
-                <div className="filterbar"></div>
+                <div className="filterbar">
+                    
+                </div>
                 {localStorage.getItem("token") ? <h5>Can't find what you are looking for? <Link to="/meets/create">Host A Meet</Link></h5>  : null}
                 {this.loadMeets()}
                 <div className="Map"></div>

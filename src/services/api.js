@@ -42,6 +42,42 @@ const signUp = data => {
   .then(res => res.json())
 };
 
+const createMeet = data => {
+  return fetch(`${API_ROOT}/meets`,{
+    method:"POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+}
+
+const createInvite = data => {
+  return fetch(`${API_ROOT}/invites`,{
+    method:"POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+}
+
+const deleteMeet = (id) => {
+  return fetch(`${API_ROOT}/meets/${id}`,{
+    method:"DELETE",
+    headers: headers()
+  })
+  .then(res => res.json())
+}
+
+const addBoardgame = data => {
+  console.log(data)
+  return fetch(`${API_ROOT}/my_games`,{
+    method:"POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+}
+
 const getBoardgames = () => {
   return fetch(`${NON_AUTH_API_ROOT}/boardgames`)
   .then(res => res.json())
@@ -53,12 +89,12 @@ const getBoardgame = (id) => {
 }
 
 const getMeets = () => {
-  return fetch(`${NON_AUTH_API_ROOT}/meets`)
+  return fetch(`${API_ROOT}/meets`)
   .then(res => res.json())
 }
 
 const getMeet = (id) => {
-  return fetch(`${NON_AUTH_API_ROOT}/meets/${id}`)
+  return fetch(`${API_ROOT}/meets/${id}`)
   .then(res => res.json())
 }
 
@@ -72,12 +108,16 @@ export const api = {
     login,
     getCurrentUser,
     signUp,
-    getUser
+    getUser,
+    getMeets,
+    getMeet,
+    createMeet,
+    createInvite,
+    deleteMeet,
+    addBoardgame
   },
   nonauth: {
     getBoardgames,
-    getBoardgame,
-    getMeets,
-    getMeet
+    getBoardgame
   }
 };

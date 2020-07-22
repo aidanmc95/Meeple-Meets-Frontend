@@ -8,11 +8,13 @@ class MeetTile extends React.Component {
         const { id, meet } = this.props
 
         return(
-            <div>
-                <Link to={`/meets/${id}`}>
-                    <p>Hi from Meets Tile</p>
-                </Link>
-            </div>
+            <Link to={`/meets/${id}`}>
+                <div className="meettile">
+                    <h3>{meet.name}</h3>
+                    <h5>{meet.when}</h5>
+                    <h5>Hosted By {meet.user.username}</h5>
+                </div>
+            </Link>
         )
     }
 }
