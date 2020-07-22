@@ -7,7 +7,7 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      error: true,
+      error: false,
       fields: {
         username: '',
         password: ''
@@ -23,9 +23,15 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     api.auth.login(this.state.fields)
-    .then(res => {
-      this.props.onLogin(res)
-      this.props.history.push('/profile')
+    .then(json => {
+      if(json.error){
+        this.setState({
+          error: json.error
+        })
+      } else {
+        this.props.onLogin(json)
+        this.props.history.push('/profile')
+      }
     })
   };
 
@@ -63,7 +69,7 @@ class Login extends React.Component {
           </form>
         </div>
         <p>Don't have an account? <Link className="link" to="/signup">Sign Up here!</Link></p>
-        {this.state.error ? <h1>Try again...</h1> : null}
+        {this.state.error ? <h1>{this.state.error}</h1> : null}
       </div>
     );
   }

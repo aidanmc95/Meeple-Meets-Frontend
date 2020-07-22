@@ -25,8 +25,12 @@ class App extends React.Component {
     const token = localStorage.getItem("token")
     if(token){
       api.auth.getCurrentUser()
-      .then(resp => {
-        this.setState({auth:{...this.state.auth, user: resp.user}})
+      .then(user => {
+        if(user.error){
+          this.logout()
+        } else {
+          this.setState({auth:{...this.state.auth, user: user}})
+        }
       })
     }
   }
@@ -68,7 +72,7 @@ class App extends React.Component {
                 {this.state.auth.user ? <Route exact path="/meets/create" render={props => <MeetsForm {...props} user={this.state.auth.user}/>} /> : null}
                 <Route exact path="/meets/:meetid" render={props => <Meet {...props} user={this.state.auth.user}/>} />
                 <Route exact path="/boardgames" render={props => <Boardgames {...props} />} />
-                <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} user={this.state.auth.user} addBoardgame={this.addBoardgame}/>} />} />
+                <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} user={this.state.auth.user} addBoardgame={this.addBoardgame}/>} />
                 {this.state.auth.user ? null : <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>}
                 {this.state.auth.user ? null : <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>}
                 {this.state.auth.user ? <Redirect to="/profile"/> : <Redirect to="/login"/>}
