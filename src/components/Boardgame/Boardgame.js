@@ -80,7 +80,7 @@ class Boardgame extends React.Component {
                     <img className="gameImage"src={this.state.boardgame.image} alt={this.state.boardgame.title}/>
                     <h3>Board Game</h3>
                     <h1>{this.state.boardgame.title}</h1>
-                    <h5>{`BGG Rank #${this.state.boardgame.BGGid}`}</h5>
+                    <h5>{`BGG Rank #${this.state.boardgame.BGGrank}`}</h5>
                     <a href={`https://boardgamegeek.com/boardgame/${this.state.boardgame.BGGid}`}>BGG Page</a>
                 </div>
                 <div className="about">

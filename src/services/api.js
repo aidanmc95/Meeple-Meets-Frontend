@@ -59,6 +59,15 @@ const createInvite = data => {
   .then(res => res.json())
 }
 
+const updateInvite = (id, data) => {
+  return fetch(`${API_ROOT}/invites/${id}`,{
+    method:"PATCH",
+    headers: headers(),
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+}
+
 const deleteMeet = (id) => {
   return fetch(`${API_ROOT}/meets/${id}`,{
     method:"DELETE",
@@ -112,6 +121,7 @@ export const api = {
     getMeet,
     createMeet,
     createInvite,
+    updateInvite,
     deleteMeet,
     addBoardgame
   },
