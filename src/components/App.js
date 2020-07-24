@@ -8,6 +8,8 @@ import MeetsForm from "./MeetsForm/MeetsForm"
 import Boardgames from "./Boardgames/Boardgames"
 import Boardgame from "./Boardgame/Boardgame"
 import NavBar from "./NavBar/NavBar"
+import Place from "./Place/Place"
+import Map from "./Map/Map"
 import { api } from "../services/api";
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
@@ -75,6 +77,8 @@ class App extends React.Component {
                 <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} user={this.state.auth.user} addBoardgame={this.addBoardgame}/>} />
                 {this.state.auth.user ? null : <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>}
                 {this.state.auth.user ? null : <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>}
+                <Route exact path="/place" render={props => <Place {...props} user={this.state.auth.user}/>} />
+                <Route exact path="/map" render={props => <Map {...props} user={this.state.auth.user}/>} />
                 {this.state.auth.user ? <Redirect to="/profile"/> : <Redirect to="/login"/>}
               </Switch>
             </Router>
