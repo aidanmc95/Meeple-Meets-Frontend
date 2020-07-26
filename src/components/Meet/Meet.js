@@ -108,7 +108,7 @@ class Meet extends React.Component {
     }
 
     loadBoardgames = () => {
-        return this.state.meet.brought_games.map(brought_game => <BoardgameTile key={brought_game.boardgame.id} id={brought_game.boardgame.id} boardgame={brought_game.boardgame} />)
+        return this.state.meet.brought_games.map(brought_game => <BoardgameTile key={brought_game.boardgame.id} id={brought_game.boardgame.id} user={brought_game.user} boardgame={brought_game.boardgame} />)
     }
 
     updateInvite = invite => {

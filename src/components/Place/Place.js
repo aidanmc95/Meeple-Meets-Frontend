@@ -10,10 +10,15 @@ export default function Place() {
     lat: null,
     lng: null
   });
+  const [zip, setZip] = React.useState("")
 
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
+    const zip = results[0].address_components.filter(component => component.types[0] == 'postal_code')
+    if (zip[0]) {
+      setZip(zip[0].long_name)
+    }
     setAddress(value);
     setCoordinates(latLng);
   };

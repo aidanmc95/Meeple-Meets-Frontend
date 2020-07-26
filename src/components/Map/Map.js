@@ -4,7 +4,7 @@ import './mapStyles.css'
 class Map extends React.Component {
 
     componentDidMount() {
-        var origin1 = new window.google.maps.LatLng(55.930385, -3.118425);
+        var origin1 = new window.google.maps.LatLng(47.6069014, -122.338528);
         var origin2 = 'Greenwich, England';
         var destinationA = 'Stockholm, Sweden';
         var destinationB = new window.google.maps.LatLng(50.087692, 14.421150);
@@ -24,6 +24,11 @@ class Map extends React.Component {
             console.log(status)
             console.log(response)
         }
+
+        window.google.maps.Geocoder.prototype.geocode({ location: origin1 }, (results, status) => {
+            console.log(status)
+            console.log(results)
+        });
     }
     
 
