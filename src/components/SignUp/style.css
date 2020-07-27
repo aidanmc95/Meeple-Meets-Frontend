@@ -54,7 +54,7 @@ input {
     border-bottom: 3px solid #FFA000; 
 }
 
-button {
+.submit {
     display: flex;
     flex-direction: row;
     padding: 16px;

@@ -17,6 +17,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      login: false,
+      signup: false,
       auth: {
         user: null
       }
@@ -62,7 +64,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="start">
         <div className="ui container grid">
           <div id="content" className="sixteen wide column">
             <Router>

@@ -63,7 +63,7 @@ class Login extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit" className="ui basic green button">
+            <button type="submit" className="loginbutton">
               Login
             </button>
           </form>

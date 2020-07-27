@@ -68,28 +68,47 @@ class Boardgame extends React.Component {
         }
     }
 
-    addLineBreaks = description => {
-        console.log(description)
-        console.log(description.split('\n'))
+    splitDescription = () => {
+        let description  = this.state.boardgame.description
+        description = description.split("splithere")
+        return description.map(part => <h5>{part}</h5>)
     }
 
     render() {
         return(
-            <div>
+            <div className="centered">
                 <div className="main">
-                    <img className="gameImage"src={this.state.boardgame.image} alt={this.state.boardgame.title}/>
-                    <h3>Board Game</h3>
-                    <h1>{this.state.boardgame.title}</h1>
-                    <h5>{`BGG Rank #${this.state.boardgame.BGGrank}`}</h5>
-                    <a href={`https://boardgamegeek.com/boardgame/${this.state.boardgame.BGGid}`}>BGG Page</a>
+                    <div className="gameDiv">
+                        <img className="gameImage" src={this.state.boardgame.image} alt={this.state.boardgame.title}/>
+                    </div>
+                    <div>
+                        <h6>Board Game</h6>
+                        <h1>{this.state.boardgame.title}</h1>
+                        <h5>Designers: {this.state.boardgame.designers.map(designer => designer.name).join(", ")}</h5>
+                        <h5>{`BGG Rank #${this.state.boardgame.BGGrank}`}</h5>
+                        <h5><a href={`https://boardgamegeek.com/boardgame/${this.state.boardgame.BGGid}`}>BGG Page</a></h5>
+                    </div>
                 </div>
-                <div className="about">
-                    <h2>About this Game</h2>
-                    <h3>Description</h3>
-                    <h5 className="description">{this.state.boardgame.description}</h5>
-                </div>
-                <div className="sidebar">
-                    {this.state.owned ? null : <button className="addtolibrary" onClick={() => this.addGame()} >Add Boardgame</button>}
+                <div className="aboutmain">
+                    <div>
+                        <h2>About this Game</h2>
+                        <h3>Description</h3>
+                        {this.splitDescription()}
+                    </div>
+                    <div>
+                        <div className="sidebar">
+                            {this.props.user ? 
+                                this.state.owned ? 
+                                    <div className="addtolibrary">YOU OWN THIS GAME</div> 
+                                    : <button className="addtolibrary" onClick={() => this.addGame()} >Add Boardgame</button>
+                                : <div className="addtolibrary">LOG IN TO ADD GAME</div>
+                            }
+                            <h5>Categories</h5>
+                            {this.state.boardgame.categories.map(category => <h6>{category.category}</h6>)}
+                            <h5>Mechanics</h5>
+                            {this.state.boardgame.mechanics.map(mechanic => <h6>{mechanic.mechanic}</h6>)}
+                        </div>
+                    </div>
                 </div>
             </div>
         )
