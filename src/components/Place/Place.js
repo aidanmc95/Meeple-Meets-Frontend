@@ -3,8 +3,9 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
+import './style.css'
 
-export default function Place() {
+export default function Place(props) {
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
@@ -21,6 +22,8 @@ export default function Place() {
     }
     setAddress(value);
     setCoordinates(latLng);
+
+    props.handlePlace(value, latLng);
   };
 
   return (
@@ -32,21 +35,18 @@ export default function Place() {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
-            <p>Latitude: {coordinates.lat}</p>
-            <p>Longitude: {coordinates.lng}</p>
-
-            <input {...getInputProps({ placeholder: "Type address" })} />
+            <input className="placeInput" {...getInputProps({ placeholder: "Type address" })} />
 
             <div>
               {loading ? <div>...loading</div> : null}
 
               {suggestions.map(suggestion => {
                 const style = {
-                  backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
+                  backgroundColor: suggestion.active ? "#FAFAFA" : "#fff",
                 };
 
                 return (
-                  <div {...getSuggestionItemProps(suggestion, { style })}>
+                  <div className="suggestion" {...getSuggestionItemProps(suggestion)}>
                     {suggestion.description}
                   </div>
                 );

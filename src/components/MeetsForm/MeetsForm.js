@@ -13,7 +13,8 @@ class MeetsForm extends React.Component {
             when: null,
             location: "",
             size: null,
-            description: ""
+            description: "",
+            zip: 0
         }
     }
 
@@ -50,6 +51,8 @@ class MeetsForm extends React.Component {
                     <input required type="datetime-local" name="when" min={moment().format('YYYY-MM-DTHH:mm')} />
                     <label for="location">Location</label>
                     <input required type="text" name="location" />
+                    <label for="zip">Zip</label>
+                    <input required type="number" name="zip" />
                     <label for="size">Maximum Gamers</label>
                     <input required type="number" name="size" min="2" max="100"/>
                     <label for="description">Description</label>

@@ -1,3 +1,7 @@
+.gameTile {
+    width: 200px;
+}
+
 .grid-element:hover {
     cursor: pointer;
 }

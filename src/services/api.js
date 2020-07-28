@@ -77,7 +77,6 @@ const deleteMeet = (id) => {
 }
 
 const addBoardgame = data => {
-  console.log(data)
   return fetch(`${API_ROOT}/my_games`,{
     method:"POST",
     headers: headers(),
@@ -102,7 +101,10 @@ const getMeets = () => {
 }
 
 const getMeet = (id) => {
-  return fetch(`${API_ROOT}/meets/${id}`)
+  return fetch(`${API_ROOT}/meets/${id}`,{
+    method:"GET",
+    headers: headers()
+  })
   .then(res => res.json())
 }
 

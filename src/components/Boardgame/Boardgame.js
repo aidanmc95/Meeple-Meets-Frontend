@@ -76,7 +76,7 @@ class Boardgame extends React.Component {
 
     render() {
         return(
-            <div className="centered">
+            <div className="gamePage">
                 <div className="main">
                     <div className="gameDiv">
                         <img className="gameImage" src={this.state.boardgame.image} alt={this.state.boardgame.title}/>

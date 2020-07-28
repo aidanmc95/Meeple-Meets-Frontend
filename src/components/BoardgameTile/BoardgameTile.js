@@ -13,10 +13,10 @@ class BoardgameTile extends React.Component {
         const { id, boardgame } = this.props
 
         return(
-            <div>
+            <div className="gameTile">
                 <Link to={`/boardgames/${id}`} className="grid-element">
-                <img src={boardgame.thumbnail} alt={`${boardgame.title}`}/>
-                <h4>{boardgame.title}</h4>
+                    <img src={boardgame.thumbnail} alt={`${boardgame.title}`}/>
+                    <h4>{boardgame.title}</h4>
                 </Link>
                 <h5>BGG Rank #{boardgame.BGGrank}</h5>
                 <h5>BGG Rating {parseFloat(boardgame.BGGrating).toFixed(2)}</h5>

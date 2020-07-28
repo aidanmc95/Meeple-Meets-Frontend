@@ -18,8 +18,8 @@ const NavBar = (props) => {
                 <Navbar.Collapse>
                     <Nav pullRight>
                         {localStorage.getItem("token") ? 
-                            <LinkContainer to="/login" onClick={() => props.onLogout()}><NavItem className="navbutton">Login</NavItem></LinkContainer> 
-                            : <LinkContainer to="/login"><NavItem className="navbutton">Log Out</NavItem></LinkContainer>
+                            <LinkContainer to="/login" onClick={() => props.onLogout()}><NavItem className="navbutton">Log Out</NavItem></LinkContainer> 
+                            : <LinkContainer to="/login"><NavItem className="navbutton">Log In</NavItem></LinkContainer>
                         }
                         {localStorage.getItem("token") ? 
                             null 

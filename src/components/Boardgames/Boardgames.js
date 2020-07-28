@@ -5,7 +5,8 @@ import './style.css'
 
 class Boardgames extends React.Component {
     state = {
-        boardgames: []
+        boardgames: [],
+        page: 1
     }
 
     componentDidMount() {
@@ -19,12 +20,23 @@ class Boardgames extends React.Component {
         return this.state.boardgames.map(boardgame => <BoardgameTile key={boardgame.id} id={boardgame.id} boardgame={boardgame} />)
     }
 
+    changePage = (newPage) => {
+        this.setState({
+            page: newPage
+        })
+    }
+
     render() {
         return(
             <div>
                 <p>Hi from Boardgames</p>
                 <div className="grid-container">
                     {this.loadBoardgames()}
+                </div>
+                <div className="gamesPage">
+                    <button onClick={() => this.changePage(this.state.page - 1)}>Previous Page</button>
+                    <h5>{this.state.page}</h5>
+                    <button onClick={() => this.changePage(this.state.page + 1)}>Next Page</button>
                 </div>
             </div>
         )

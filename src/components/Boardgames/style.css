@@ -1,6 +1,33 @@
+
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(10, 1fr );
     gap: 10px 10px;
-  }
+}
+
+.gamesPage {
+    display: grid;
+    place-items: center;
+}
+
+@media (min-width: 900px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        gap: 10px 10px;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        gap: 10px 10px;
+    }
+}

@@ -1,3 +1,9 @@
 .start {
-    background-color: #FAFAFA;
+    /* background-color: #FAFAFA; */
+}
+
+.centered {
+    width: 90vw;
+    height: 100vw;
+    margin: 0 auto;
 }

@@ -1,0 +1,7 @@
+.suggestion {
+    background-color: #F8F8F8;
+}
+
+.suggestion:hover {
+    background-color: #9F9F9F;
+}

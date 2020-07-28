@@ -12,6 +12,7 @@ import Place from "./Place/Place"
 import Map from "./Map/Map"
 import { api } from "../services/api";
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import './App.css'
 
 class App extends React.Component {
   constructor() {
@@ -69,20 +70,22 @@ class App extends React.Component {
           <div id="content" className="sixteen wide column">
             <Router>
               <NavBar onLogout={this.logout} />
-              <Switch>
-                {this.state.auth.user ? <Route exact path="/profile" render={props => <Profile {...props} user={this.state.auth.user}/>} /> : null}
-                <Route exact path="/profile/:profileid" render={props => <Profile {...props} user={this.state.auth.user}/>} />
-                <Route exact path="/meets" render={props => <Meets {...props} user={this.state.auth.user}/>} />
-                {this.state.auth.user ? <Route exact path="/meets/create" render={props => <MeetsForm {...props} user={this.state.auth.user}/>} /> : null}
-                <Route exact path="/meets/:meetid" render={props => <Meet {...props} user={this.state.auth.user}/>} />
-                <Route exact path="/boardgames" render={props => <Boardgames {...props} />} />
-                <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} user={this.state.auth.user} addBoardgame={this.addBoardgame}/>} />
-                {this.state.auth.user ? null : <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>}
-                {this.state.auth.user ? null : <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>}
-                <Route exact path="/place" render={props => <Place {...props} user={this.state.auth.user}/>} />
-                <Route exact path="/map" render={props => <Map {...props} user={this.state.auth.user}/>} />
-                {this.state.auth.user ? <Redirect to="/profile"/> : <Redirect to="/login"/>}
-              </Switch>
+              <div className="centered">
+                <Switch>
+                  {this.state.auth.user ? <Route exact path="/profile" render={props => <Profile {...props} user={this.state.auth.user}/>} /> : null}
+                  <Route exact path="/profile/:profileid" render={props => <Profile {...props} user={this.state.auth.user}/>} />
+                  <Route exact path="/meets" render={props => <Meets {...props} user={this.state.auth.user}/>} />
+                  {this.state.auth.user ? <Route exact path="/meets/create" render={props => <MeetsForm {...props} user={this.state.auth.user}/>} /> : null}
+                  <Route exact path="/meets/:meetid" render={props => <Meet {...props} user={this.state.auth.user}/>} />
+                  <Route exact path="/boardgames" render={props => <Boardgames {...props} />} />
+                  <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} user={this.state.auth.user} addBoardgame={this.addBoardgame}/>} />
+                  {this.state.auth.user ? null : <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>}
+                  {this.state.auth.user ? null : <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>}
+                  <Route exact path="/place" render={props => <Place {...props} user={this.state.auth.user}/>} />
+                  <Route exact path="/map" render={props => <Map {...props} user={this.state.auth.user}/>} />
+                  {this.state.auth.user ? <Redirect to="/profile"/> : <Redirect to="/login"/>}
+                </Switch>
+              </div>
             </Router>
           </div>
         </div>

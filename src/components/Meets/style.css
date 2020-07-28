@@ -2,3 +2,33 @@
     width: 86px;
     height: 32px;
 }
+
+.meetsMain {
+    display: grid;
+    grid-template-columns: minmax(200px, 40%) 1fr;
+}
+
+.calendar {
+    width: minmax(300px, 90%);
+    height: 100%;
+    margin:auto;
+}
+
+.filterbar {
+    position: relative;
+    width: 95%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: #2F2E41;
+    border-radius: 4px;
+}
+
+.places {
+    position: absolute;
+    margin: 0;
+    width: 95%;
+    
+}
