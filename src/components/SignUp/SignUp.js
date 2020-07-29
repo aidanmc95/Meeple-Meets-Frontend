@@ -8,9 +8,17 @@ class SignUp extends React.Component {
     super();
     this.state = {
       error: false,
+      id: null,
       fields: {
         username: '',
-        password: ''
+        password: '',
+        BGGusername: '',
+        email: '',
+        address1: '',
+        address2: '',
+        zip: '',
+        about_me: '',
+        as_host: ''
       }
     };
   }
@@ -22,7 +30,6 @@ class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.fields)
     api.auth.signUp(this.state.fields)
     .then(res => {
       this.props.onLogin(res)
@@ -38,14 +45,13 @@ class SignUp extends React.Component {
         <h1>Expand your  board game group.</h1>
         <h2>Sign up for Meeple Meets and make new friends!</h2>
         <div className="ui form">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
             <div className="ui field">
               <label>Username</label><br/>
               <input
                 name="username"
                 placeholder="username"
                 value={fields.username}
-                onChange={this.handleChange}
               />
             </div>
             <div className="ui field">
@@ -55,9 +61,22 @@ class SignUp extends React.Component {
                 type="password"
                 placeholder="password"
                 value={fields.password}
-                onChange={this.handleChange}
               />
             </div>
+            <label for="email">Email</label>
+            <input required type="text" name="email" placeholder="Email" />
+            <label for="BGGusername">BGG Username</label>
+            <input required type="text" name="BGGusername" placeholder="BGG Username" />
+            <label for="address1">Address 1</label>
+            <input required type="text" name="address1" placeholder="Address 1" />
+            <label for="address2">Address 2</label>
+            <input required type="text" name="address2" placeholder="Address 2" />
+            <label for="zip">Zip</label>
+            <input required type="number" name="zip" placeholder="Zip" />
+            <label for="about_me">About You</label><br/>
+            <textarea required type="text" name="about_me" placeholder="About You" /><br/>
+            <label for="as_host">As Host</label><br/>
+            <textarea required type="text" name="as_host" placeholder="As Host" /><br/>
             <button type="submit" className="submit">
               SignUp
             </button>

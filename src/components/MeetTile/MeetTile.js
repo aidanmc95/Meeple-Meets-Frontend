@@ -6,7 +6,7 @@ class MeetTile extends React.Component {
 
     state = {
         address: null,
-        distance: 0
+        distance: "Not Logged In"
     }
 
     componentDidMount() {
@@ -72,13 +72,15 @@ class MeetTile extends React.Component {
         const { id, meet } = this.props
 
         return(
-            <Link to={`/meets/${id}`} className="meettile">
-                <h3>{meet.name}</h3>
-                <h5>Date: {new Date(meet.when).toJSON().slice(0,10).replace(/-/g,'/')}</h5>
-                <h5>Time: {new Date(meet.when).toLocaleTimeString()}</h5>
-                <h5>Hosted By {meet.user.username}</h5>
-                <h5>Distance: {this.state.distance}</h5>
-            </Link>
+            <div className="meettile">
+                <Link to={`/meets/${id}`}>
+                    <h3>{meet.name}</h3>
+                    <h5>Date: {new Date(meet.when).toJSON().slice(0,10).replace(/-/g,'/')}</h5>
+                    <h5>Time: {new Date(meet.when).toLocaleTimeString()}</h5>
+                    <h5>Hosted By {meet.user.username}</h5>
+                    <h5>Distance: {this.state.distance}</h5>
+                </Link>
+            </div>
         )
     }
 }

@@ -124,7 +124,6 @@ class Meet extends React.Component {
                 invites: newInvites
             }
         }))
-        console.log(invite)
     }
 
     loadConfirmations = () => {
@@ -133,26 +132,49 @@ class Meet extends React.Component {
 
     render() {
 
-        const currentGamers = this.state.meet.invites.filter(invite => invite.status).length
+        const currentGamers = this.state.meet.invites.filter(invite => invite.status).length + 1
 
         return(
             <div>
-                <h1>{this.state.meet.name}</h1>
-                <h2>Hosted By: <Link to={`/profile/${this.state.meet.user.id}`}>{this.state.meet.user.username}</Link></h2>
-                <h4>Max Size: {this.state.meet.size}</h4>
-                <h4>Current Gamers: {currentGamers}</h4>
-                <h3>Address</h3>
-                <h5>{this.state.meet.location}</h5>
-                <h3>From the Host</h3>
-                <h5>{this.state.meet.description}</h5>
-                {this.state.disabledButton ? null : <button className="joinmeet" disabled={this.state.disabledButton} onClick={() => this.joinMeet()}>Request to Join</button>}
-                {this.state.meetHost ? <button className="cancelmeet" onClick={() => this.cancelMeet()}>Cancel Meet</button> : null}
+                <Link to='/meets'>Back to the meet list</Link>
+                <div className="meetinfo">
+                    <div>
+                        <h1>{this.state.meet.name}</h1>
+                        <h2>Hosted By: <Link to={`/profile/${this.state.meet.user.id}`}>{this.state.meet.user.username}</Link></h2>
+                        <h4>Current Meeters: {currentGamers} of {this.state.meet.size}</h4>
+                        {this.state.meet.location != "" ? 
+                            <div>
+                                <h3>Address</h3> 
+                                <h5>{this.state.meet.location}</h5>
+                            </div>
+                            : <div>
+                                <h5>Exact Address hidden until you are approved</h5>
+                                <h6>This information will be available to you once the host has approved your invitation.</h6>
+                            </div>
+                        }
+                        <h3>From the Host</h3>
+                        <h5>{this.state.meet.description}</h5>
+                    </div>
+                    <div>
+                        <div className="sidebar">
+                            <div>
+                                <h4>Event Details</h4>
+                            </div>
+                            <h4>Host Requests</h4>
+                            <h4>Gaming Style</h4>
+                            <h4>Other</h4>
+                            {this.state.disabledButton ? null : <button className="joinmeet" disabled={this.state.disabledButton} onClick={() => this.joinMeet()}>Request to Join</button>}
+                            {this.state.meetHost ? <button className="cancelmeet" onClick={() => this.cancelMeet()}>Cancel Meet</button> : null}
+                            {(this.state.meetHost && currentGamers < this.state.meet.size) ? <div className="invites">
+                                {this.loadConfirmations()}
+                            </div> : null }
+                        </div>
+                        {this.state.disabledButton ? null : <h6>Hosts usually respond within 24 hours.</h6>}
+                    </div>
+                </div>
                 <div className="broughtgames">
                     {this.loadBoardgames()}
                 </div>
-                {(this.state.meetHost && currentGamers < this.state.meet.size) ? <div className="invites">
-                    {this.loadConfirmations()}
-                </div> : null }
             </div>
         )
     }

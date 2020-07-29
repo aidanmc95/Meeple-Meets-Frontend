@@ -5,7 +5,8 @@
 
 .meetsMain {
     display: grid;
-    grid-template-columns: minmax(200px, 40%) 1fr;
+    grid-template-columns: minmax(360px, 40%) 1fr;
+    margin-top:25px;
 }
 
 .calendar {
