@@ -58,6 +58,7 @@ input {
     display: flex;
     flex-direction: row;
     padding: 16px;
+    margin: auto;
 
     font-family: Source Sans Pro;
     font-style: normal;

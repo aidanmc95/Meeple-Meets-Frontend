@@ -10,9 +10,9 @@
 }
 
 .calendar {
-    width: minmax(300px, 90%);
-    height: 100%;
+    width: 90%;
     margin:auto;
+    position: relative;
 }
 
 .filterbar {
@@ -21,15 +21,15 @@
     height: 40px;
     display: flex;
     justify-content: center;
-    align-items: center;
     
     background: #2F2E41;
     border-radius: 4px;
+
+    z-index: 3;
 }
 
 .places {
-    position: absolute;
-    margin: 0;
-    width: 95%;
-    
+    position: relative;
+    margin: 7px;
+    width: 95%;  
 }

@@ -1,0 +1,21 @@
+.hostMeet {
+    position: relative;
+    margin: auto;
+    width: 70%;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+}
+
+.placesform {
+    position: relative;
+    margin: 0;
+    width: 100%;  
+    z-index: 3;
+}
+
+label {
+    position: relative;
+}

@@ -20,6 +20,10 @@
     place-items: center;
 }
 
+.map {
+    position: relative;
+}
+
 @media (min-width: 900px) {
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
     .broughtgames {

@@ -16,14 +16,17 @@ export default function Place(props) {
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
-    const zip = results[0].address_components.filter(component => component.types[0] == 'postal_code')
-    if (zip[0]) {
-      setZip(zip[0].long_name)
-    }
+    const newzip = results[0].address_components.filter(component => component.types[0] == 'postal_code')
     setAddress(value);
     setCoordinates(latLng);
 
-    props.handlePlace(value, latLng);
+    if (newzip[0]) {
+      setZip(newzip[0].long_name)
+
+      props.handlePlace(value, latLng, newzip[0].long_name);
+    } else {
+      props.handlePlace(value, latLng, zip);
+    }
   };
 
   return (

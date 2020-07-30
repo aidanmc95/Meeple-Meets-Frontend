@@ -53,7 +53,7 @@ class Meets extends React.Component {
         return filteredMeets.map(meet => <MeetTile key={meet.id} id={meet.id} meet={meet} location={this.state.location}/>)
     }
 
-    handlePlace = (location, latlng) => {
+    handlePlace = (location, latlng, zip) => {
         this.setState({
             diff_location: true,
             location: location,
@@ -82,12 +82,14 @@ class Meets extends React.Component {
                 <div className="meetsMain">
                     <div className="meets">
                         {this.loadMeets()}
+                    </div >
+                    <div>
+                        <Calendar
+                        className="calendar"
+                        onChange={this.changeDate}
+                        value={this.state.date}
+                        />
                     </div>
-                    <Calendar
-                    className="calendar"
-                    onChange={this.changeDate}
-                    value={this.state.date}
-                    />
                 </div>
             </div>
         )

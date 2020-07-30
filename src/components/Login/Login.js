@@ -42,32 +42,15 @@ class Login extends React.Component {
       <div className="form">
         <h1>Meeple Meets</h1>
         <h2>Log In and make new friends!</h2>
-        <div className="ui form">
-          <form onSubmit={this.handleSubmit}>
-            <div className="ui field">
+          <form onSubmit={this.handleSubmit}onChange={this.handleChange} >
               <label>Username</label><br/>
-              <input
-                name="username"
-                placeholder="username"
-                value={fields.username}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="ui field">
+              <input name="username" placeholder="username" value={fields.username}/>
               <label>Password</label><br/>
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                value={fields.password}
-                onChange={this.handleChange}
-              />
-            </div>
+              <input name="password" type="password" placeholder="password" value={fields.password} />
             <button type="submit" className="loginbutton">
               Login
             </button>
           </form>
-        </div>
         <p>Don't have an account? <Link className="link" to="/signup">Sign Up here!</Link></p>
         {this.state.error ? <h1>{this.state.error}</h1> : null}
       </div>

@@ -69,7 +69,7 @@ class App extends React.Component {
         <div className="ui container grid">
           <div id="content" className="sixteen wide column">
             <Router>
-              <NavBar onLogout={this.logout} />
+              <NavBar {...this.props} user={this.state.auth.user} onLogout={this.logout} />
               <div className="centered">
                 <Switch>
                   {this.state.auth.user ? <Route exact path="/profile" render={props => <Profile {...props} user={this.state.auth.user}/>} /> : null}

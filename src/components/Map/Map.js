@@ -6,57 +6,73 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Map extends React.Component {
 
+    state = {
+      location: null,
+      zip: null,
+      zoom: 11
+    }
+
     componentDidMount() {
-        // var origin1 = new window.google.maps.LatLng(47.6069014, -122.338528);
-        // var origin2 = 'Greenwich, England';
-        // var destinationA = 'Stockholm, Sweden';
-        // var destinationB = new window.google.maps.LatLng(50.087692, 14.421150);
+      this.markers = [];
+      this.mapObj = this.createGoogleMap();
+    }
 
-        // let service = window.google.maps.DistanceMatrixService
+    createGoogleMap() {
+      var mapOptions = {
+        zoom: 13,
+        center: {lat: 47.6085, lng: -122.3364}
+      }
+      const map = new window.google.maps.Map(document.getElementById('map'), mapOptions);
+      return map;
+    }
 
-        // service.prototype.getDistanceMatrix(
-        //     {
-        //       origins: [origin1, origin2],
-        //       destinations: [destinationA, destinationB],
-        //       travelMode: 'DRIVING',
-        //     }, callback);
+    componentDidUpdate() {
+      if ((this.props.zip != this.state.zip && this.props.zip) || ( this.props.location != this.state.location && this.props.location)) {
+        const newzip = this.props.zip ? this.props.zip : null
+        const newlocation = this.props.location ? this.props.location : null
+        this.setState({
+          location: newlocation,
+          zip: newzip
+        })
+      }
+      this.addMap();
+    }
 
-        // function callback(response, status) {
-        //     // See Parsing the Results for
-        //     // the basics of a callback function.
-        //     console.log(status)
-        //     console.log(response)
-        // }
-
-        // window.google.maps.Geocoder.prototype.geocode({ location: origin1 }, (results, status) => {
-        //     console.log(status)
-        //     console.log(results)
-        // });
+    addMap = () => {
+      console.log(this.mapObj)
+      const address = this.state.location ? this.state.location : this.state.zip
+      if(address) {
+        new window.google.maps.Geocoder.prototype.geocode({ address: address }, (results, status) => {
+          const map = this.mapObj;
+  
+          if(this.state.location){
+            let marker = new window.google.maps.Marker({
+              position: results[0].geometry.location,
+              map
+            });
+            map.setCenter(marker.getPosition())
+          } else if(this.state.zip) {
+            let circle = new window.google.maps.Circle({
+              strokeColor: "#FF0000",
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: "#FF0000",
+              fillOpacity: 0.35,
+              map,
+              center: results[0].geometry.location,
+              radius: 1000
+            });
+            map.setCenter(circle.getPosition())
+          }
+        });
+      }
     }
     
-    static defaultProps = {
-        center: {
-          lat: 47.6069014,
-          lng: -122.338528
-        },
-        zoom: 11
-      };
-    
-      render() {
+    render() {
         return (
           // Important! Always set the container height explicitly
-          <div style={{ height: '100vh', width: '100%' }}>
-            <GoogleMapReact
-              bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_MAP_KEY  }}
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-            >
-              <AnyReactComponent
-                lat={47.6069014}
-                lng={-122.338528}
-                text="My Marker"
-              />
-            </GoogleMapReact>
+          <div id="map">
+
           </div>
         );
       }

@@ -2,6 +2,7 @@ import React from 'react';
 import {api} from '../../services/api'
 import { Link } from 'react-router-dom'
 import BoardgameTile from '../BoardgameTile/BoardgameTile'
+import Map from '../Map/Map'
 import InviteConfirmation from '../InviteConfirmation/InviteConfirmation'
 import './style.css'
 
@@ -14,7 +15,8 @@ class Meet extends React.Component {
             name: "",
             size: null,
             invites: [],
-            location: "",
+            location: null,
+            zip: null,
             description: "",
             user: {
                 id: null,
@@ -152,6 +154,9 @@ class Meet extends React.Component {
                                 <h6>This information will be available to you once the host has approved your invitation.</h6>
                             </div>
                         }
+                        <div className="map">
+                            <Map location={this.state.meet.location} zip={this.state.meet.zip}/>
+                        </div>
                         <h3>From the Host</h3>
                         <h5>{this.state.meet.description}</h5>
                     </div>
