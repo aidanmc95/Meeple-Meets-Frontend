@@ -7,6 +7,13 @@ class BoardgameTile extends React.Component {
         console.log(event)
         this.props.history.push(`/boardgames${id}`)
     }
+
+    componentDidMount() {
+        window.scroll({
+            top: 0, 
+            left: 0
+        });
+    }
     
     render() {
 

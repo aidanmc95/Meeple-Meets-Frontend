@@ -25,22 +25,29 @@ class Profile extends React.Component {
     componentDidMount() {
         if(this.props.user) {
             this.setState(prevState => ({
-                ...prevState.user,
-                user: this.props.user
+                user:{
+                    ...prevState.user,
+                    ...this.props.user
+                }
             }))
         }
         if(this.props.user && this.props.user.id == this.props.match.params.profileid){
             this.props.history.push('/profile')
         } else if(this.props.match.params.profileid) {
             api.auth.getUser(this.props.match.params.profileid)
-            .then(resp => this.setState(prevState=> ({
-                ...prevState.user,
-                user: resp
-            })))
+            .then(resp => {
+                this.setState(prevState=> ({
+                    user: {
+                        ...prevState.user,
+                        ...resp
+                    }
+                }))
+            })
         }
     }
 
     componentDidUpdate() {
+        console.log(this.state)
         if(this.props.user && this.props.user.id == this.props.match.params.profileid){
             this.props.history.push('/profile')
         }
@@ -65,14 +72,26 @@ class Profile extends React.Component {
                 <h2>User Profile</h2>
                 <div className="userinfo">
                     <div className="info">
-
+                        <div className='privateInfo'>
+                            <h3>Private Info</h3>
+                            {!this.props.match.params.profileid ? 
+                                <div>
+                                    <h6>This information is only shown if you are friends with another player, or if you give permission to a new guest to see it.</h6>
+                                    <h5>Email</h5>
+                                    <h6>{this.state.user.email}</h6>
+                                    <h5>Address:</h5>
+                                    <h6>{this.state.user.address1}</h6>
+                                </div>
+                                : <h5>This info is protected and only accessable by the user.</h5>
+                            }
+                        </div>
                         <h2>About Me</h2>
                         <h5>{this.state.user.about_me}</h5>
                         <h2>As a Host</h2>
                         <h5>{this.state.user.as_host}</h5>
                     </div>
                     <div className="sidegames">
-
+                        
                     </div>
                 </div>
                 <div className="grid-container">

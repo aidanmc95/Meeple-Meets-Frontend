@@ -30,6 +30,11 @@ class Meet extends React.Component {
     }
 
     componentDidMount() {
+        window.scroll({
+            top: 0, 
+            left: 0
+        });
+        
         api.auth.getMeet(this.props.match.params.meetid)
         .then(resp => {
             this.setState(prevState => ({
@@ -146,8 +151,6 @@ class Meet extends React.Component {
                     brought_games: newBroughtGames
                 }
             }))
-        } else {
-            console.log("hi")
         }
     }
 
@@ -185,7 +188,7 @@ class Meet extends React.Component {
                         {this.state.meet.location != "" ? 
                             <div>
                                 <h3>Address</h3> 
-                                <h5>{this.state.meet.location}</h5>
+                                <h5><a href={"https://www.google.com/maps?q=" + this.state.meet.location} target="_blank">{this.state.meet.location}</a></h5>
                             </div>
                             : <div>
                                 <h5>Exact Address hidden until you are approved</h5>

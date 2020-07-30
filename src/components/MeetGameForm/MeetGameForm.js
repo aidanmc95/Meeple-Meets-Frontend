@@ -36,7 +36,6 @@ export default function MeetGameForm(props){
     }
 
     const addGame = (id) => {
-        console.log("add game")
         if(props.user) {
             api.auth.createBrought({
                 boardgame_id: id,
@@ -50,14 +49,14 @@ export default function MeetGameForm(props){
         if(props.user) {
             return props.user.boardgames.map(boardgame => <div>
                 <BoardgameTile key={boardgame.id} id={boardgame.id} boardgame={boardgame} />
-                <button onClick={() => addGame(boardgame.id)}>Add Game</button>
+                {!props.meet.brought_games.filter(brought_game => brought_game.boardgame.id === boardgame.id)[0] ? <button onClick={() => addGame(boardgame.id)}>Add Game</button> : null}
             </div>)
         }
     }
 
     return (
       <div>
-        <a className="navbutton" onClick={openModal}>Open Modal</a>
+        <a className="navbutton" onClick={openModal}>Add Board Game</a>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}

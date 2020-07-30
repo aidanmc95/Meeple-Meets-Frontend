@@ -11,6 +11,11 @@ class Boardgames extends React.Component {
     }
 
     componentDidMount() {
+        window.scroll({
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth'
+        });
         api.nonauth.getBoardgames()
         .then(resp => this.setState({
             boardgames: resp
@@ -18,18 +23,19 @@ class Boardgames extends React.Component {
     }
 
     loadBoardgames = () => {
-        let page_games = this.filterGames().slice(((this.state.page-1) * 20), 20);
+        let page_games = this.filterGames().slice(((this.state.page-1) * 20), ((this.state.page) * 20));
         return page_games.map(boardgame => <BoardgameTile key={boardgame.id} id={boardgame.id} boardgame={boardgame} />)
     }
 
     handleFilter = (event) => {
         this.setState({
-            filter: event.target.value
+            filter: event.target.value,
+            page: 1
         })
     }
 
     filterGames = () => {
-        return this.state.boardgames.filter(boardgame => boardgame.title.toUpperCase().includes(this.state.filter.toUpperCase()))
+        return (this.state.filter !== "" ? this.state.boardgames.filter(boardgame => boardgame.title.toUpperCase().includes(this.state.filter.toUpperCase())) : this.state.boardgames)
     }
 
     changePage = (newPage) => {

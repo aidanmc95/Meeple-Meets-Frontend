@@ -61,7 +61,7 @@ class SignUp extends React.Component {
             <label>Password</label><br/>
             <input name="password" type="password" placeholder="password" value={fields.password}/>
             <label for="email">Email</label>
-            <input required type="text" name="email" placeholder="Email" />
+            <input required type="email" name="email" placeholder="Email" />
             <label for="BGGusername">BGG Username</label>
             <input required type="text" name="BGGusername" placeholder="BGG Username" />
             <label for="address1">Address 1</label>

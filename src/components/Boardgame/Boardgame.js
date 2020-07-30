@@ -25,6 +25,11 @@ class Boardgame extends React.Component {
     }
 
     componentDidMount() {
+        window.scroll({
+            top: 0, 
+            left: 0
+        });
+        
         api.nonauth.getBoardgame(this.props.match.params.boardgameid)
         .then(resp => this.setState(prevState => ({
             boardgame: {
@@ -86,7 +91,7 @@ class Boardgame extends React.Component {
                         <h1>{this.state.boardgame.title}</h1>
                         <h5>Designers: {this.state.boardgame.designers.map(designer => designer.name).join(", ")}</h5>
                         <h5>{`BGG Rank #${this.state.boardgame.BGGrank}`}</h5>
-                        <h5><a href={`https://boardgamegeek.com/boardgame/${this.state.boardgame.BGGid}`}>BGG Page</a></h5>
+                        <h5><a href={`https://boardgamegeek.com/boardgame/${this.state.boardgame.BGGid}`} target="_blank">BGG Page</a></h5>
                     </div>
                 </div>
                 <div className="aboutmain">
