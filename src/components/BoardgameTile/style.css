@@ -5,3 +5,8 @@
 .grid-element:hover {
     cursor: pointer;
 }
+
+.gameTileImage {
+    width: 175px;
+    height: 175px;
+}

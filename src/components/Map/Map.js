@@ -39,12 +39,11 @@ class Map extends React.Component {
     }
 
     addMap = () => {
-      console.log(this.mapObj)
-      const address = this.state.location ? this.state.location : this.state.zip
+      let address = this.state.location ? this.state.location : this.state.zip
       if(address) {
+        address = address.toString()
         new window.google.maps.Geocoder.prototype.geocode({ address: address }, (results, status) => {
           const map = this.mapObj;
-  
           if(this.state.location){
             let marker = new window.google.maps.Marker({
               position: results[0].geometry.location,
@@ -62,7 +61,7 @@ class Map extends React.Component {
               center: results[0].geometry.location,
               radius: 1000
             });
-            map.setCenter(circle.getPosition())
+            map.setCenter(circle.getCenter())
           }
         });
       }

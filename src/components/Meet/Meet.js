@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import BoardgameTile from '../BoardgameTile/BoardgameTile'
 import Map from '../Map/Map'
 import InviteConfirmation from '../InviteConfirmation/InviteConfirmation'
+import MeetGameForm from '../MeetGameForm/MeetGameForm'
 import './style.css'
 
 class Meet extends React.Component {
@@ -11,7 +12,9 @@ class Meet extends React.Component {
     state = {
         disabledButton: false,
         meetHost: false,
+        disableAddGame: false,
         meet: {
+            id: null,
             name: "",
             size: null,
             invites: [],
@@ -67,6 +70,20 @@ class Meet extends React.Component {
                     })
                 }
             }
+
+            if(this.state.meet.invites.filter(invite => (invite.user.id == this.props.user.id && invite.status))[0] || this.props.user.id == this.state.meet.user.id) {
+                if(this.state.disableAddGame) {
+                    this.setState({
+                        disableAddGame: false
+                    })
+                }
+            } else {
+                if(!this.state.disableAddGame) {
+                    this.setState({
+                        disableAddGame: true
+                    })
+                }
+            }
         } else {
             if(!this.state.disabledButton) {
                 this.setState({
@@ -77,6 +94,12 @@ class Meet extends React.Component {
             if(this.state.meetHost) {
                 this.setState({
                     disabledButton: false
+                })
+            }
+
+            if(!this.state.disableAddGame) {
+                this.setState({
+                    disableAddGame: true
                 })
             }
         }
@@ -111,6 +134,17 @@ class Meet extends React.Component {
 
     loadBoardgames = () => {
         return this.state.meet.brought_games.map(brought_game => <BoardgameTile key={brought_game.boardgame.id} id={brought_game.boardgame.id} user={brought_game.user} boardgame={brought_game.boardgame} />)
+    }
+
+    addBroughtGame = (brought_game) => {
+        const newBroughtGames = this.state.meet.brought_games
+        newBroughtGames.push(brought_game)
+        this.setState(prevState => ({
+            meet: {
+                ...prevState.meet,
+                brought_games: newBroughtGames
+            }
+        }))
     }
 
     updateInvite = invite => {
@@ -170,13 +204,23 @@ class Meet extends React.Component {
                             <h4>Other</h4>
                             {this.state.disabledButton ? null : <button className="joinmeet" disabled={this.state.disabledButton} onClick={() => this.joinMeet()}>Request to Join</button>}
                             {this.state.meetHost ? <button className="cancelmeet" onClick={() => this.cancelMeet()}>Cancel Meet</button> : null}
-                            {(this.state.meetHost && currentGamers < this.state.meet.size) ? <div className="invites">
-                                {this.loadConfirmations()}
-                            </div> : null }
+                            {(this.state.meetHost && currentGamers < this.state.meet.size) ? 
+                                <div className="invites">
+                                    {this.loadConfirmations()}
+                                </div> 
+                                : null 
+                            }
                         </div>
                         {this.state.disabledButton ? null : <h6>Hosts usually respond within 24 hours.</h6>}
+                        {!this.state.disableAddGame ? 
+                            <div className="addGame">
+                                <MeetGameForm user={this.props.user} meet={this.state.meet} addBroughtGame={this.addBroughtGame}/>
+                            </div> 
+                            : null
+                        }
                     </div>
                 </div>
+                <h2>Board Games</h2>
                 <div className="broughtgames">
                     {this.loadBoardgames()}
                 </div>

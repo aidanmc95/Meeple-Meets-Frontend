@@ -112,6 +112,15 @@ const getUser = (id) => {
   return fetch(`${API_ROOT}/users/${id}`)
   .then(res => res.json())
 }
+
+const createBrought = (data) => {
+  return fetch(`${API_ROOT}/brought_games`,{
+    method:"POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+}
   
 export const api = {
   auth: {
@@ -125,7 +134,8 @@ export const api = {
     createInvite,
     updateInvite,
     deleteMeet,
-    addBoardgame
+    addBoardgame,
+    createBrought
   },
   nonauth: {
     getBoardgames,

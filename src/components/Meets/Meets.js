@@ -49,8 +49,9 @@ class Meets extends React.Component {
         let filteredMeets = this.state.meets.filter(meet => new Date(meet.when).toJSON().slice(0,10).replace(/-/g,'/') == new Date(this.state.date).toJSON().slice(0,10).replace(/-/g,'/'))
         if(!filteredMeets[0]) {
             return <h3>There are no meets on {new Date(this.state.date).toJSON().slice(0,10).replace(/-/g,'/')}.</h3>
+        } else {
+            return filteredMeets.map(meet => <MeetTile key={meet.id} id={meet.id} meet={meet} location={this.state.location}/>)
         }
-        return filteredMeets.map(meet => <MeetTile key={meet.id} id={meet.id} meet={meet} location={this.state.location}/>)
     }
 
     handlePlace = (location, latlng, zip) => {
