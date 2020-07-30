@@ -108,9 +108,9 @@ class Boardgame extends React.Component {
                                     : <button className="addtolibrary" onClick={() => this.addGame()} >Add Boardgame</button>
                                 : <div className="addtolibrary">LOG IN TO ADD GAME</div>
                             }
-                            <h5>Categories</h5>
+                            <h3>Categories</h3>
                             {this.state.boardgame.categories.map(category => <h6>{category.category}</h6>)}
-                            <h5>Mechanics</h5>
+                            <h3>Mechanics</h3>
                             {this.state.boardgame.mechanics.map(mechanic => <h6>{mechanic.mechanic}</h6>)}
                         </div>
                     </div>

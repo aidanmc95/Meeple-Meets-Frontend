@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import BoardgameTile from '../BoardgameTile/BoardgameTile'
 import {api} from '../../services/api'
 import { relativeTimeRounding } from 'moment';
+import './style.css'
 
 const customStyles = {
   content : {
@@ -56,7 +57,7 @@ export default function MeetGameForm(props){
 
     return (
       <div>
-        <a className="navbutton" onClick={openModal}>Add Board Game</a>
+        <a className="navbutton2" onClick={openModal}>Add Board Game</a>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
