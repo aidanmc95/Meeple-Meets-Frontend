@@ -27,9 +27,9 @@ class Meets extends React.Component {
         })
 
         if(this.props.user) {
-            if(this.props.user.address != this.state.location && !this.state.diff_location) {
+            if(this.props.user.address1 != this.state.location && !this.state.diff_location) {
                 this.setState({
-                    location: this.props.user.address
+                    location: this.props.user.address1
                 })
             }
         }
@@ -37,9 +37,9 @@ class Meets extends React.Component {
 
     componentDidUpdate() {
         if(this.props.user) {
-            if(this.props.user.address != this.state.location && !this.state.diff_location) {
+            if(this.props.user.address1 != this.state.location && !this.state.diff_location) {
                 this.setState({
-                    location: this.props.user.address
+                    location: this.props.user.address1
                 })
             }
         }

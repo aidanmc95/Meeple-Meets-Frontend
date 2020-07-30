@@ -48,7 +48,10 @@ export default function MeetGameForm(props){
 
     const loadBoardgames = () => {
         if(props.user) {
-            return props.user.boardgames.map(boardgame => <div><BoardgameTile key={boardgame.id} id={boardgame.id} boardgame={boardgame} /><button onClick={() => addGame(boardgame.id)}>Add Game</button></div>)
+            return props.user.boardgames.map(boardgame => <div>
+                <BoardgameTile key={boardgame.id} id={boardgame.id} boardgame={boardgame} />
+                <button onClick={() => addGame(boardgame.id)}>Add Game</button>
+            </div>)
         }
     }
 

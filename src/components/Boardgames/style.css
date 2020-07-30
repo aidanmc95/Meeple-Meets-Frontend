@@ -12,6 +12,14 @@
     place-items: center;
 }
 
+.pageItem {
+    float: right;
+}
+
+.gameSearch {
+    padding: 10px;
+}
+
 @media (min-width: 900px) {
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
     .grid-container {

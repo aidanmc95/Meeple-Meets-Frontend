@@ -54,10 +54,11 @@ input {
     border-bottom: 3px solid #FFA000; 
 }
 
-.submit {
+.signUpbutton {
     display: flex;
     flex-direction: row;
     padding: 16px;
+    margin: auto;
 
     font-family: Source Sans Pro;
     font-style: normal;
@@ -77,4 +78,5 @@ input {
 .form {
     width: 50%;
     margin: 0 auto;
+    max-width: 300px;
 }

@@ -137,14 +137,18 @@ class Meet extends React.Component {
     }
 
     addBroughtGame = (brought_game) => {
-        const newBroughtGames = this.state.meet.brought_games
-        newBroughtGames.push(brought_game)
-        this.setState(prevState => ({
-            meet: {
-                ...prevState.meet,
-                brought_games: newBroughtGames
-            }
-        }))
+        if(!brought_game.error){
+            const newBroughtGames = this.state.meet.brought_games
+            newBroughtGames.push(brought_game)
+            this.setState(prevState => ({
+                meet: {
+                    ...prevState.meet,
+                    brought_games: newBroughtGames
+                }
+            }))
+        } else {
+            console.log("hi")
+        }
     }
 
     updateInvite = invite => {
