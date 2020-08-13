@@ -1,38 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import Example from '../Example/Example'
 import './style.css'
 
-const NavBar = (props) => {
+const NavBarNew = (props) => {
     return(
         <div className="padding">
-            <div className="navbar">
-                <Link to="/login">
-                    <div className="navlogo">
-                        <img src={process.env.PUBLIC_URL + '/For_Dark_Bg.png'} alt="Logo" />
-                    </div>
+            <ul>
+                <Link className="brand" to="/login">
+                    <img src={process.env.PUBLIC_URL + '/For_Dark_Bg.png'} alt="Logo" />
                 </Link>
                 {localStorage.getItem("token") ? 
-                    <Link to="/login" className="navbutton" onClick={() => props.onLogout()}>Log Out</Link> 
-                    : <Link to="/login" className="navbutton">Log In</Link>
+                    <li>
+                        <Link to="/login" onClick={() => props.onLogout()}>Log Out</Link> 
+                    </li>
+                    : <li><Link to="/login">Log In</Link></li>
                 }
                 {localStorage.getItem("token") ? 
                     null 
-                    : <Link to="/signup" className="navbutton">Sign Up</Link>
+                    : <li><Link to="/signup">Sign Up</Link></li>
                 }
                 {localStorage.getItem("token") ? 
-                    <Link to="/profile" className="navbutton">Profile</Link> 
+                    <li><Link to="/profile">Profile</Link></li>
                     : null
                 }
                 {localStorage.getItem("token") ? 
-                    <Link to="/meets/create" className="navbutton">Host A Meet</Link> 
+                    <li><Link to="/meets/create">Host A Meet</Link></li>
                     : null
-                    }
-                <Link to="/meets" className="navbutton">Find A Meet</Link>
-                <Link className="navbutton" to="/boardgames">Boardgames</Link>
-            </div>
+                }
+                <li><Link to="/meets">Find A Meet</Link></li>
+                <li><Link to="/boardgames">Boardgames</Link></li>
+            </ul>
         </div>
     )
 }
 
-export default NavBar;
+export default NavBarNew;

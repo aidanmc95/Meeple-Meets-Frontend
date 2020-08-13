@@ -2,51 +2,35 @@
     padding-bottom: 5%;
 }
 
-.navbar {
-    background-color: #2F2E41;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
-    height: 68px;
+    background-color: #2F2E41;
 }
 
-.navbutton {
+li {
     float: right;
-    color: #f2f2f2;
-    text-align: right;
-    padding: 10px;
-    text-decoration: none;
-    
-    font-family: Source Sans Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 20px;
-    font-variant: small-caps;
-    
-    margin-right: 14px;
-    margin-top: 14px;
-    color: #FFA000;
 }
 
-.navbutton:hover {
+li a {
+    display: block;
+    color: #FFA000;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #07031b;
     border-bottom: 3px solid #FFA000; 
 }
 
-.navbutton:active {
-    background-color: #59576C;
-    color: #ffd149;
-    border-bottom: 3px solid #ffd149; 
-}
-
-.navlogo {
-    width: 86px;
-    height: 32px;
-    float: left;
-    margin-left: 18px;
-    margin-top: 18px;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
+.brand {
+    position: absolute;
+    left: 5px;
+    top: 5px;
 }
