@@ -1,5 +1,6 @@
 import React from 'react';
 import {api} from '../../services/api'
+import { Link } from 'react-router-dom'
 import './style.css'
 
 class InviteConfirmation extends React.Component { 
@@ -20,9 +21,11 @@ class InviteConfirmation extends React.Component {
 
         return(
             <div className="invite">
-                <h3>{invite.user.username} Would Like to go to the Meet</h3>
-                <button className="confirminvite" onClick={() => this.answerInvite(true)}>Accept Invite</button>
-                <button className="confirminvite" onClick={() => this.answerInvite(false)}>Decline Invite</button>
+                <h5><Link to={`/profile/${invite.user.id}`}>{invite.user.username}</Link> Would Like to go to the Meet</h5>
+                <div className="center">
+                    <button className="secondarybutton" onClick={() => this.answerInvite(true)}>Accept Invite</button>
+                    <button className="secondarybutton" onClick={() => this.answerInvite(false)}>Decline Invite</button>
+                </div>
             </div>
         )
     }

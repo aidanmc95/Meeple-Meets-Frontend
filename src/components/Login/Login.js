@@ -47,7 +47,7 @@ class Login extends React.Component {
               <input name="username" placeholder="username" value={fields.username}/>
               <label>Password</label><br/>
               <input name="password" type="password" placeholder="password" value={fields.password} />
-            <button type="submit" className="loginbutton">
+            <button type="submit" className="primarybutton">
               Login
             </button>
           </form>

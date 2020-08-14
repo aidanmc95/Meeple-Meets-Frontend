@@ -23,7 +23,7 @@ class BoardgameTile extends React.Component {
             <div className="gameTile">
                 <Link to={`/boardgames/${id}`} className="grid-element">
                     <img className='gameTileImage' src={boardgame.thumbnail} alt={`${boardgame.title}`}/>
-                    <h4>{boardgame.title}</h4>
+                    <h4 style={{color: "#3E3E3E"}}>{boardgame.title}</h4>
                 </Link>
                 <h5>BGG Rank #{boardgame.BGGrank}</h5>
                 <h5>BGG Rating {parseFloat(boardgame.BGGrating).toFixed(2)}</h5>

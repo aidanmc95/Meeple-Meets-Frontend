@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Modal from 'react-modal';
 import BoardgameTile from '../BoardgameTile/BoardgameTile'
 import {api} from '../../services/api'
@@ -56,8 +56,8 @@ export default function MeetGameForm(props){
     }
 
     return (
-      <div>
-        <a className="navbutton2" onClick={openModal}>Add Board Game</a>
+      <Fragment>
+          <button className="primarybutton" onClick={openModal}>Add Board Game</button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -71,6 +71,6 @@ export default function MeetGameForm(props){
                 {loadBoardgames()}
             </div>
         </Modal>
-      </div>
+      </Fragment>
     );
 }

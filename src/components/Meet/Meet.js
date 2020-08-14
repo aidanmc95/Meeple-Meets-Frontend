@@ -183,14 +183,14 @@ class Meet extends React.Component {
                 <div className="meetinfo">
                     <div>
                         <h1>{this.state.meet.name}</h1>
-                        <h2>Hosted By: <Link to={`/profile/${this.state.meet.user.id}`}>{this.state.meet.user.username}</Link></h2>
+                        <h4>Hosted By: <Link to={`/profile/${this.state.meet.user.id}`}>{this.state.meet.user.username}</Link></h4>
                         <h4>Current Meeters: {currentGamers} of {this.state.meet.size}</h4>
-                        {this.state.meet.location != "" ? 
+                        {this.state.meet.location? 
                             <div>
                                 <h3>Address</h3> 
                                 <h5><a href={"https://www.google.com/maps?q=" + this.state.meet.location} target="_blank">{this.state.meet.location}</a></h5>
                             </div>
-                            : <div>
+                            : <div className="noInvite">
                                 <h5>Exact Address hidden until you are approved</h5>
                                 <h6>This information will be available to you once the host has approved your invitation.</h6>
                             </div>
@@ -201,28 +201,28 @@ class Meet extends React.Component {
                         <h3>From the Host</h3>
                         <h5>{this.state.meet.description}</h5>
                     </div>
-                    <div>
+                    <div className="rightSide">
                         <div className="sidebar">
-                            <div>
-                                <h4>Event Details</h4>
+                            <div className="top">
+                                Event Details
                             </div>
-                            <h4>Host Requests</h4>
-                            <h4>Gaming Style</h4>
-                            <h4>Other</h4>
-                            {this.state.disabledButton ? null : <button className="joinmeet" disabled={this.state.disabledButton} onClick={() => this.joinMeet()}>Request to Join</button>}
-                            {this.state.meetHost ? <button className="cancelmeet" onClick={() => this.cancelMeet()}>Cancel Meet</button> : null}
-                            {(this.state.meetHost && currentGamers < this.state.meet.size) ? 
-                                <div className="invites">
-                                    {this.loadConfirmations()}
-                                </div> 
-                                : null 
-                            }
+                            <div className="properties" >
+                                <h5>Host Requests</h5>
+                                <h5>Gaming Style</h5>
+                                <h5>Other</h5>
+                                {this.state.disabledButton ? null : <button className="primarybutton" disabled={this.state.disabledButton} onClick={() => this.joinMeet()}>Request to Join</button>}
+                                {this.state.meetHost ? <button className="primarybutton" onClick={() => this.cancelMeet()}>Cancel Meet</button> : null}
+                                {(this.state.meetHost && currentGamers < this.state.meet.size) ? 
+                                    <div>
+                                        {this.loadConfirmations()}
+                                    </div> 
+                                    : null 
+                                }
+                            </div>
                         </div>
                         {this.state.disabledButton ? null : <h6>Hosts usually respond within 24 hours.</h6>}
                         {!this.state.disableAddGame ? 
-                            <div className="addGame">
-                                <MeetGameForm user={this.props.user} meet={this.state.meet} addBroughtGame={this.addBroughtGame}/>
-                            </div> 
+                            <MeetGameForm user={this.props.user} meet={this.state.meet} addBroughtGame={this.addBroughtGame}/>
                             : null
                         }
                     </div>

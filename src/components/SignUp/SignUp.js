@@ -87,7 +87,7 @@ class SignUp extends React.Component {
             <textarea required type="text" name="about_me" placeholder="About You" /><br/>
             <label for="as_host">As Host</label><br/>
             <textarea required type="text" name="as_host" placeholder="As Host" /><br/>
-            <button type="submit" className="signUpbutton">
+            <button type="submit" className="primarybutton">
               SignUp
             </button>
           </form>

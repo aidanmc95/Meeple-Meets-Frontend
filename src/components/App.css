@@ -1,5 +1,5 @@
 .start {
-    /* background-color: #FAFAFA; */
+    /* background-color: #545454; */
 }
 
 .centered {
@@ -9,46 +9,60 @@
 }
 
 h1 {
-    font-family: Source Sans Pro;
+    font-family: Arial, sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 32px;
-    line-height: 40px;
-    margin: 2px;
+    font-size: 48px;
+    line-height: 60px;
+    margin: 0px 0px 8px 0px;
 
-    color: #2F2E41;
+    color: #2e2e2e;
 }
 
 h2 {
-    font-family: Source Sans Pro;
+    font-family: Arial, sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 32px;
+    line-height: 40px;  
     text-transform: uppercase;
-    margin: 2px;
+    margin: 0px 0px 6px 0px;
 
-    color: #59576C;
+    color: #3E3E3E;
 }
 
 h3, h4, h5, h6 {
-    margin: 2px;
+    margin: 4px 0px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #3E3E3E;
+}
+
+h4 {
+    font-weight: bold;
+    color: #9F9F9F;
+    font-weight: normal;
+}
+
+h6 {
+    color: #9F9F9F;
+    font-weight: normal;
 }
 
 p {
     display: inline-block;
-    font-family: Source Sans Pro;
+    font-family: Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 20px;
-    margin: 2px;
+    margin: 3px 0px;
 
     color: #3F3D56;
 }
 
 label {
-    font-family: Source Sans Pro;
+    font-family: Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -58,7 +72,7 @@ label {
 }
 
 input {
-    font-family: Source Sans Pro;
+    font-family: Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -69,4 +83,71 @@ input {
 
     border: 0;
     border-bottom: 3px solid #FFA000; 
+}
+
+a {
+    color: #FFA000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffd149;
+}
+
+.primarybutton {
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    margin: 5px auto;
+
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #3F3D56;
+
+    background: #FFD149;
+    border-radius: 4px;
+
+    border: 0;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+button {
+    cursor: pointer;
+}
+
+.secondarybutton {
+    display: flex;
+    flex-direction: row;
+    padding: 4px;
+    margin: 5px 5px 5px 0px;
+
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 8px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+
+    background: #2F2E41;
+    border-radius: 4px;
+
+    border: 0;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+
+    display: inline;
+}
+
+.sidebar {
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    background-color: #F8F8F8;
+    padding-bottom: 3px;
+}
+
+.rightSide {
+    margin-left: 15px;
 }
