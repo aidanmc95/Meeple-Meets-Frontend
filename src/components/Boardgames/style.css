@@ -8,12 +8,7 @@
 }
 
 .gamesPage {
-    display: grid;
-    place-items: center;
-}
-
-.pageItem {
-    float: right;
+    text-align: center;
 }
 
 .gameSearch {

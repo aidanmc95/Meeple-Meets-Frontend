@@ -181,7 +181,7 @@ class Meet extends React.Component {
             <div>
                 <Link to='/meets'>Back to the meet list</Link>
                 <div className="meetinfo">
-                    <div>
+                    <div className="leftSide">
                         <h1>{this.state.meet.name}</h1>
                         <h4>Hosted By: <Link to={`/profile/${this.state.meet.user.id}`}>{this.state.meet.user.username}</Link></h4>
                         <h4>Current Meeters: {currentGamers} of {this.state.meet.size}</h4>
@@ -195,9 +195,7 @@ class Meet extends React.Component {
                                 <h6>This information will be available to you once the host has approved your invitation.</h6>
                             </div>
                         }
-                        <div className="map">
-                            <Map location={this.state.meet.location} zip={this.state.meet.zip}/>
-                        </div>
+                        <Map location={this.state.meet.location} zip={this.state.meet.zip}/>
                         <h3>From the Host</h3>
                         <h5>{this.state.meet.description}</h5>
                     </div>
@@ -211,19 +209,19 @@ class Meet extends React.Component {
                                 <h5>Gaming Style</h5>
                                 <h5>Other</h5>
                                 {this.state.disabledButton ? null : <button className="primarybutton" disabled={this.state.disabledButton} onClick={() => this.joinMeet()}>Request to Join</button>}
-                                {this.state.meetHost ? <button className="primarybutton" onClick={() => this.cancelMeet()}>Cancel Meet</button> : null}
-                                {(this.state.meetHost && currentGamers < this.state.meet.size) ? 
-                                    <div>
-                                        {this.loadConfirmations()}
-                                    </div> 
-                                    : null 
+                                {!this.state.disableAddGame ? 
+                                    <MeetGameForm user={this.props.user} meet={this.state.meet} addBroughtGame={this.addBroughtGame}/>
+                                    : null
                                 }
                             </div>
+                            {this.state.meetHost ? <button className="cancelMeet" onClick={() => this.cancelMeet()}>Cancel Meet</button> : null}
                         </div>
                         {this.state.disabledButton ? null : <h6>Hosts usually respond within 24 hours.</h6>}
-                        {!this.state.disableAddGame ? 
-                            <MeetGameForm user={this.props.user} meet={this.state.meet} addBroughtGame={this.addBroughtGame}/>
-                            : null
+                        {(this.state.meetHost && currentGamers < this.state.meet.size) ? 
+                            <div>
+                                {this.loadConfirmations()}
+                            </div> 
+                            : null 
                         }
                     </div>
                 </div>

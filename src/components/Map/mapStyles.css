@@ -1,19 +1,21 @@
 #map {
   height: 150px;
-}
-html, body {
-  height: 400px;
-  margin: 0;
-  padding: 0;
+  position: relative;
 }
 
 @media (min-width: 650px) {
   #map {
-    height: 250px;
+    height: 200px;
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 800px) {
+  #map {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1000px) {
   #map {
     height: 400px;
   }

@@ -55,9 +55,7 @@ class Boardgames extends React.Component {
                     {this.loadBoardgames()}
                 </div>
                 <div className="gamesPage">
-                    {this.state.boardgames[(this.state.page-2) * 20] ? <button className="pageItem" onClick={() => this.changePage(this.state.page - 1)}>Previous Page</button> : null}
-                    <h5 className="pageItem">{this.state.page}</h5>
-                    {this.state.boardgames[(this.state.page) * 20] ? <button className="pageItem" onClick={() => this.changePage(this.state.page + 1)}>Next Page</button> : null}
+                    <h5><span>{this.state.boardgames[(this.state.page-2) * 20] ? <button className="secondarybutton" style={{margin: "8px"}} onClick={() => this.changePage(this.state.page - 1)}>Previous Page</button> : null}</span>{this.state.page}<span>{this.state.boardgames[(this.state.page) * 20] ? <button className="secondarybutton" style={{margin: "8px"}}onClick={() => this.changePage(this.state.page + 1)}>Next Page</button> : null}</span></h5>
                 </div>
             </div>
         )
