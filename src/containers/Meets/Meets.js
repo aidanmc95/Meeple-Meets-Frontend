@@ -1,7 +1,7 @@
 import React from 'react';
 import {api} from '../../services/api'
-import MeetTile from '../MeetTile/MeetTile'
-import Place from '../Place/Place'
+import MeetTile from '../../components/MeetTile/MeetTile'
+import Place from '../../components/Place/Place'
 import { Link } from 'react-router-dom'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
@@ -67,7 +67,7 @@ class Meets extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="centered">
                 <div className="navlogo2">
                     <img src={process.env.PUBLIC_URL + '/ForLightBg.png'} alt="Logo" />
                 </div>

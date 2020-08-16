@@ -1,5 +1,5 @@
 import React from 'react';
-import BoardgameTile from '../BoardgameTile/BoardgameTile'
+import BoardgameTile from '../../components/BoardgameTile/BoardgameTile'
 import {api} from '../../services/api'
 import './style.css'
 
@@ -46,7 +46,7 @@ class Boardgames extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="centered">
                 <h1>Board Game Library</h1>
                 <div className="gameSearch">
                     <input type="text" onChange={(event) => this.handleFilter(event)} placeholder="Search for a Game" />

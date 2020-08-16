@@ -1,7 +1,7 @@
 import React from 'react';
-import BoardgameTile from '../BoardgameTile/BoardgameTile'
-import BoardgameSidebarTile from '../BoardgameSidebarTile/BoardgameSidebarTile'
-import Carousel from '../Carousel/Carousel'
+import BoardgameTile from '../../components/BoardgameTile/BoardgameTile'
+import BoardgameSidebarTile from '../../components/BoardgameSidebarTile/BoardgameSidebarTile'
+import Carousel from '../../components/Carousel/Carousel'
 import {api} from '../../services/api'
 import './style.css'
 
@@ -84,7 +84,7 @@ class Profile extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="centered">
                 {!this.props.match.params.profileid ? <h4 style={{"font-weight": "bold"}}>Your Profile</h4> : null}
                 <h1>{this.state.user.username}</h1>
                 <h5 style={{display: "inline"}}>Hosted {this.state.user.meets.length} Meeple Meets    </h5>
@@ -92,11 +92,7 @@ class Profile extends React.Component {
                 <h5>Member Since {new Date(this.state.user.created_at).toJSON().slice(0,10).replace(/-/g,'/')}</h5>
 
                 <h3>Your Games</h3>
-                <div className="carousel">
-                    <Carousel boardgames={this.state.user.boardgames}>
-
-                    </Carousel>
-                </div>
+                <Carousel boardgames={this.state.user.boardgames}></Carousel>
 
                 <div className="userinfo">
                     <div className="leftSide">

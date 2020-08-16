@@ -4,7 +4,7 @@ import './style.css'
 
 const NavBarNew = (props) => {
     return(
-        <div className="padding">
+        <div className="navbar">
             <ul>
                 <Link className="brand" to="/login">
                     <img src={process.env.PUBLIC_URL + '/For_Dark_Bg.png'} alt="Logo" />

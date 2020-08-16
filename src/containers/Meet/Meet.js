@@ -1,10 +1,10 @@
 import React from 'react';
 import {api} from '../../services/api'
 import { Link } from 'react-router-dom'
-import BoardgameTile from '../BoardgameTile/BoardgameTile'
-import Map from '../Map/Map'
-import InviteConfirmation from '../InviteConfirmation/InviteConfirmation'
-import MeetGameForm from '../MeetGameForm/MeetGameForm'
+import BoardgameTile from '../../components/BoardgameTile/BoardgameTile'
+import Map from '../../components/Map/Map'
+import InviteConfirmation from '../../components/InviteConfirmation/InviteConfirmation'
+import MeetGameForm from '../../components/MeetGameForm/MeetGameForm'
 import './style.css'
 
 class Meet extends React.Component {
@@ -178,7 +178,7 @@ class Meet extends React.Component {
         const currentGamers = this.state.meet.invites.filter(invite => invite.status).length + 1
 
         return(
-            <div>
+            <div className="centered">
                 <Link to='/meets'>Back to the meet list</Link>
                 <div className="meetinfo">
                     <div className="leftSide">

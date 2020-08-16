@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import Login from '../Login/Login'
+import Login from '../../containers/Login/Login'
 import MeetsForm from '../MeetsForm/MeetsForm'
 import { relativeTimeRounding } from 'moment';
 
