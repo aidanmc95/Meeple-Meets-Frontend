@@ -66,19 +66,24 @@ class App extends React.Component {
       <div className="start">
         <Router>
           <NavBar {...this.props} user={this.state.auth.user} onLogout={this.logout} />
-          <Switch>
-            {this.state.auth.user ? <Route exact path="/profile" render={props => <Profile {...props} user={this.state.auth.user}/>} /> : null}
-            <Route exact path="/profile/:profileid" render={props => <Profile {...props} user={this.state.auth.user}/>} />
-            <Route exact path="/meets" render={props => <Meets {...props} user={this.state.auth.user}/>} />
-            {this.state.auth.user ? <Route exact path="/meets/create" render={props => <MeetsForm {...props} user={this.state.auth.user}/>} /> : null}
-            <Route exact path="/meets/:meetid" render={props => <Meet {...props} user={this.state.auth.user}/>} />
-            <Route exact path="/boardgames" render={props => <Boardgames {...props} />} />
-            <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} user={this.state.auth.user} addBoardgame={this.addBoardgame}/>} />
-            {this.state.auth.user ? null : <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>}
-            {this.state.auth.user ? null : <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>}
-            {this.state.auth.user ? <Redirect to="/profile"/> : <Redirect to="/login"/>}
-          </Switch>
+            <Switch>
+              {this.state.auth.user ? <Route exact path="/profile" render={props => <Profile {...props} user={this.state.auth.user}/>} /> : null}
+              <Route exact path="/profile/:profileid" render={props => <Profile {...props} user={this.state.auth.user}/>} />
+              <Route exact path="/meets" render={props => <Meets {...props} user={this.state.auth.user}/>} />
+              {this.state.auth.user ? <Route exact path="/meets/create" render={props => <MeetsForm {...props} user={this.state.auth.user}/>} /> : null}
+              <Route exact path="/meets/:meetid" render={props => <Meet {...props} user={this.state.auth.user}/>} />
+              <Route exact path="/boardgames" render={props => <Boardgames {...props} />} />
+              <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} user={this.state.auth.user} addBoardgame={this.addBoardgame}/>} />
+              {this.state.auth.user ? null : <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>}
+              {this.state.auth.user ? null : <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>}
+              {this.state.auth.user ? <Redirect to="/profile"/> : <Redirect to="/login"/>}
+            </Switch>
         </Router>
+        <footer className="footer">
+          <a href="https://linkedin.com/in/aidan-muller-cohn-03a17153" className="smallLogo" target="_blank"><img src={process.env.PUBLIC_URL + '/LI-In-Bug.png'} alt="GitHub" className="smallLogo"/></a>
+          <img src={process.env.PUBLIC_URL + '/ForLightBg.png'} alt="Logo" className="largeLogo"/>
+          <a href="https://github.com/aidanmc95" className="smallLogo" target="_blank"><img src={process.env.PUBLIC_URL + '/GitHub-Mark-64px.png'} alt="GitHub" className="smallLogo"/></a>
+        </footer>
       </div>
     );
   }

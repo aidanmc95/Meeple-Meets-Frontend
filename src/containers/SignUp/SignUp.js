@@ -69,35 +69,38 @@ class SignUp extends React.Component {
     return (
       <div className="formPage">
         <div className="formStuff">
-          <div className="formInfo">
-            <img src={process.env.PUBLIC_URL + '/ForLightBg.png'} alt="Logo" />
-            <h3>Expand your  board game group.</h3>
-            <h3>Sign up for Meeple Meets and make new friends!</h3>
-              <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-                <input className="info" name="username" placeholder="&#x1F464; username" value={fields.username} /><br/>
-                <input className="info" name="password" type="password" placeholder="&#x1f512; password" value={fields.password}/><br/>
-                <input required className="info" type="email" name="email" placeholder="&#9993; Email" /><br/>
-                <input className="info" type="text" name="BGGusername" placeholder="BGG Username" /><br/>
-                {/* <div className="placesform">
-                    <Place className="info" handlePlace={this.handlePlace}/>
-                </div><br/>
-                <input className="info" type="text" name="address2" placeholder="Address 2" /><br/>
-                <input required className="info" type="number" name="zip" placeholder="Zip" value={this.state.fields.zip}/>
-                <label for="about_me">About You</label><br/>
-                <textarea required className="info" type="text" name="about_me" placeholder="About You" /><br/>
-                <label for="as_host">As Host</label><br/>
-                <textarea required className="info" type="text" name="as_host" placeholder="As Host" /><br/> */}
-                <button type="submit" className="primarybutton">
-                  SignUp
-                </button>
-              </form>
-              {this.state.errors ? <h1>{this.showErrors()}</h1> : null}
+          <div>
+          <img style={{"margin-top": "10px", "margin-left": "10px"}}src={process.env.PUBLIC_URL + '/ForLightBg.png'} alt="Logo" />
+            <div className="formInfo">
+              <h3>Expand your  board game group.</h3>
+              <h3>Sign up for Meeple Meets and make new friends!</h3>
+                <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+                  <input className="info" name="username" placeholder="&#x1F464; username" value={fields.username} /><br/>
+                  <input className="info" name="password" type="password" placeholder="&#x1f512; password" value={fields.password}/><br/>
+                  <input required className="info" type="email" name="email" placeholder="&#9993; Email" /><br/>
+                  <input className="info" type="text" name="BGGusername" placeholder="BGG Username" /><br/>
+                  {/* <div className="placesform">
+                      <Place className="info" handlePlace={this.handlePlace}/>
+                  </div><br/>
+                  <input className="info" type="text" name="address2" placeholder="Address 2" /><br/>
+                  <input required className="info" type="number" name="zip" placeholder="Zip" value={this.state.fields.zip}/>
+                  <label for="about_me">About You</label><br/>
+                  <textarea required className="info" type="text" name="about_me" placeholder="About You" /><br/>
+                  <label for="as_host">As Host</label><br/>
+                  <textarea required className="info" type="text" name="as_host" placeholder="As Host" /><br/> */}
+                  <button type="submit" className="primarybutton">
+                    SignUp
+                  </button>
+                </form>
+                {this.state.errors ? <h1>{this.showErrors()}</h1> : null}
+            </div>
           </div>
           <div className="formSide">
-            <h3 className="sideTextLarge">Hello, Meeter!</h3>
-            <h4 className="sideTextSmall">Enter Your Personal Information</h4>
-            <h4 className="sideTextSmall">and Start playing today</h4>
-            <Link className="startLink" to="/login">Login Here!</Link>
+            <div className="centerSide">
+              <h3 className="sideTextLarge">Welcome, Back!</h3>
+              <h4 className="sideTextSmall">Login with Your Personal Info</h4>
+              <Link className="startLink" to="/login">Login Here!</Link>
+            </div>
           </div>
         </div>
       </div>

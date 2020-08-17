@@ -1,21 +1,17 @@
 .formPage {
     display: flex;
-    justify-content: center;
-    text-align: center;
     width:100%;
     background: linear-gradient(180deg, rgba(47,46,65,1) 5%, rgba(248,248,248,0) 100%);
 }
 
 .formStuff {
     display: flex;
-    margin: 100px 0;
+    margin: 100px auto;
     width: 850px;
     height: 400px;
     background: #F8F8F8;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
-    justify-content: center;
-    text-align: center;
     overflow:hidden;
 }
 
@@ -46,9 +42,9 @@
 }
 
 .sideTextLarge {
-    margin: auto;
+    margin: 20px auto;
     color: #FFA000;
-    font-size: 30px;
+    font-size: 25px;
     display: flex;
     flex-direction: row;
 }
@@ -63,8 +59,14 @@
 .startLink {
     display: inline-block;
     border-radius: 10px;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 3px;
     border: 1px #FFA000;
     border-style: solid;
+}
+
+.centerSide {
+    display: grid;
+    place-items: center;
+    margin-top: 80px;
 }

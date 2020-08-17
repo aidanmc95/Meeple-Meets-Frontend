@@ -47,10 +47,12 @@ class Login extends React.Component {
         <div className="formStuff">
           <div className="formSide">
             <img src={process.env.PUBLIC_URL + '/For_Dark_Bg.png'} alt="Logo" />
-            <h3 className="sideTextLarge">Hello, Meeter!</h3>
-            <h4 className="sideTextSmall">Enter Your Personal Information</h4>
-            <h4 className="sideTextSmall">and Start playing today</h4>
-            <Link className="startLink" to="/signup">Sign Up here!</Link>
+            <div className="centerSide">
+              <h3 className="sideTextLarge">Hello, Meeter!</h3>
+              <h4 className="sideTextSmall">Enter Your Personal Information</h4>
+              <h4 className="sideTextSmall">and Start playing today</h4>
+              <Link className="startLink" to="/signup">Sign Up here!</Link>
+            </div>
           </div>
           <div className="formInfo">
             <h1>Meeple Meets</h1>
