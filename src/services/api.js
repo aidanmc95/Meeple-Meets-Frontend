@@ -1,5 +1,7 @@
-const API_ROOT = `http://localhost:3000/api/v1`;
-const NON_AUTH_API_ROOT = `http://localhost:3000`;
+// const API_ROOT = `http://localhost:3000/api/v1`;
+// const NON_AUTH_API_ROOT = `http://localhost:3000`;
+const API_ROOT = `https://meeple-meets-backend.herokuapp.com/api/v1`;
+const NON_AUTH_API_ROOT = `https://meeple-meets-backend.herokuapp.com/`;
 
 const token = () => localStorage.getItem("token");
 
