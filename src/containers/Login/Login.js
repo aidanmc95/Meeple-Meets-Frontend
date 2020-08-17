@@ -15,6 +15,10 @@ class Login extends React.Component {
     };
   }
 
+  componentDidMount() {
+    document.getElementsByClassName("info")[0].focus()
+  }
+
   handleChange = e => {
     const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
     this.setState({ fields: newFields });
@@ -40,23 +44,26 @@ class Login extends React.Component {
     const { fields } = this.state;
     return (
       <div className="formPage">
-        <div className="formSide">
-
-        </div>
-        <div className="form">
-          <h1>Meeple Meets</h1>
-          <h2>Log In and make new friends!</h2>
-            <form onSubmit={this.handleSubmit}onChange={this.handleChange} >
-                <label>Username</label><br/>
-                <input name="username" placeholder="username" value={fields.username}/>
-                <label>Password</label><br/>
-                <input name="password" type="password" placeholder="password" value={fields.password} />
-              <button type="submit" className="primarybutton">
-                Login
-              </button>
-            </form>
-          <p>Don't have an account? <Link className="link" to="/signup">Sign Up here!</Link></p>
-          {this.state.error ? <h1>{this.state.error}</h1> : null}
+        <div className="formStuff">
+          <div className="formSide">
+            <img src={process.env.PUBLIC_URL + '/For_Dark_Bg.png'} alt="Logo" />
+            <h3 className="sideTextLarge">Hello, Meeter!</h3>
+            <h4 className="sideTextSmall">Enter Your Personal Information</h4>
+            <h4 className="sideTextSmall">and Start playing today</h4>
+            <Link className="startLink" to="/signup">Sign Up here!</Link>
+          </div>
+          <div className="formInfo">
+            <h1>Meeple Meets</h1>
+            <h2>Log In and make new friends!</h2>
+              <form onSubmit={this.handleSubmit}onChange={this.handleChange} >
+                  <input className="info" name="username" placeholder="&#x1F464; username" value={fields.username}/><br/>
+                  <input className="info" name="password" type="password" placeholder="&#x1f512;password" value={fields.password} /><br/>
+                <button type="submit" className="primarybutton">
+                  Login
+                </button>
+              </form>
+            {this.state.error ? <h1>{this.state.error}</h1> : null}
+          </div>
         </div>
       </div>
     );

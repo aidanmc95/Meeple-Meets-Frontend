@@ -1,5 +1,70 @@
-.form {
-    width: 60%;
-    margin: 0 auto;
-    max-width: 300px;
+.formPage {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width:100%;
+    background: linear-gradient(180deg, rgba(47,46,65,1) 5%, rgba(248,248,248,0) 100%);
+}
+
+.formStuff {
+    display: flex;
+    margin: 100px 0;
+    width: 850px;
+    height: 400px;
+    background: #F8F8F8;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    justify-content: center;
+    text-align: center;
+    overflow:hidden;
+}
+
+.formInfo {
+    margin: auto;
+    text-align: center;
+    width: 600px;
+    background-color: #F8F8F8;
+    overflow:scroll;
+}
+
+.formSide {
+    background-color: rgba(47,46,65,1);
+    padding: 10px;
+    float: left;
+    width: 250px;
+    height: 100%;
+    overflow:hidden
+}
+
+.info {
+    margin: auto;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    line-height: 30px;
+    border-bottom: none;
+}
+
+.sideTextLarge {
+    margin: auto;
+    color: #FFA000;
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sideTextSmall {
+    margin: auto;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+}
+
+.startLink {
+    display: inline-block;
+    border-radius: 10px;
+    margin: 5px 5px;
+    padding: 3px;
+    border: 1px #FFA000;
+    border-style: solid;
 }
