@@ -5,6 +5,10 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
