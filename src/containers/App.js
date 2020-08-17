@@ -67,16 +67,16 @@ class App extends React.Component {
         <Router>
           <NavBar {...this.props} user={this.state.auth.user} onLogout={this.logout} />
             <Switch>
-              {this.state.auth.user ? <Route exact path="/profile" render={props => <Profile {...props} user={this.state.auth.user}/>} /> : null}
+              {this.state.auth.user ? <Route exact path="/" render={props => <Profile {...props} user={this.state.auth.user}/>} /> : null}
               <Route exact path="/profile/:profileid" render={props => <Profile {...props} user={this.state.auth.user}/>} />
               <Route exact path="/meets" render={props => <Meets {...props} user={this.state.auth.user}/>} />
               {this.state.auth.user ? <Route exact path="/meets/create" render={props => <MeetsForm {...props} user={this.state.auth.user}/>} /> : null}
               <Route exact path="/meets/:meetid" render={props => <Meet {...props} user={this.state.auth.user}/>} />
               <Route exact path="/boardgames" render={props => <Boardgames {...props} />} />
               <Route exact path="/boardgames/:boardgameid" render={props => <Boardgame {...props} user={this.state.auth.user} addBoardgame={this.addBoardgame}/>} />
-              {this.state.auth.user ? null : <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/>}
+              {this.state.auth.user ? null : <Route exact path="/" render={props => <Login {...props} onLogin={this.login} />}/>}
               {this.state.auth.user ? null : <Route exact path="/signup" render={props => <SignUp {...props} onLogin={this.login} />}/>}
-              {this.state.auth.user ? <Redirect to="/profile"/> : <Redirect to="/login"/>}
+              {this.state.auth.user ? <Redirect to="/"/> : <Redirect to="/"/>}
             </Switch>
         </Router>
         <footer className="footer">
