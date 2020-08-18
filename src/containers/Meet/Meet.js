@@ -186,13 +186,14 @@ class Meet extends React.Component {
 
         return(
             <div className="centered">
-                {!this.state.boardgamesPage? <div><Link to='/meets'>Back to the meet list</Link> <a onClick={() => this.boardgamesPagebolean()}>View Boardgames</a></div> : <a onClick={() => this.boardgamesPagebolean()}>Back to Meet Page</a>}
+                {!this.state.boardgamesPage? <Link to='/meets'>Back to the meet list</Link> : <a onClick={() => this.boardgamesPagebolean()}>Back to Meet Page</a>}
                 {!this.state.boardgamesPage? 
                     <div className="meetinfo">
                         <div className="leftSide">
                             <h1>{this.state.meet.name}</h1>
                             <h4>Hosted By: <Link to={`/profile/${this.state.meet.user.id}`}>{this.state.meet.user.username}</Link></h4>
                             <h4>Current Meeters: {currentGamers} of {this.state.meet.size}</h4>
+                            <a onClick={() => this.boardgamesPagebolean()}>View Boardgames</a>
                             {this.state.meet.location? 
                                 <div>
                                     <h3>Address</h3> 

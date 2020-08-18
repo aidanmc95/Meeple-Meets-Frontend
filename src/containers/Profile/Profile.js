@@ -1,5 +1,4 @@
 import React from 'react';
-import BoardgameTile from '../../components/BoardgameTile/BoardgameTile'
 import BoardgamesSubset from '../../components/BoardgamesSubset/BoardgamesSubset'
 import BoardgameSidebarTile from '../../components/BoardgameSidebarTile/BoardgameSidebarTile'
 import Carousel from '../../components/Carousel/Carousel'
@@ -63,8 +62,7 @@ class Profile extends React.Component {
                 user:{
                     ...prevState.user,
                     ...this.props.user
-                },
-                boardgamesPage: false
+                }
             }))
         } else if(this.state.user.id != this.props.match.params.profileid && this.props.match.params.profileid) {
             api.auth.getUser(this.props.match.params.profileid)
@@ -92,7 +90,7 @@ class Profile extends React.Component {
     render() {
         return(
             <div className="centered">
-                {this.state.boardgamesPage? 
+                {!this.state.boardgamesPage? 
                     <div>
                         {!this.props.match.params.profileid ? <h4 style={{"font-weight": "bold"}}>Your Profile</h4> : null}
                         <h1>{this.state.user.username}</h1>
@@ -108,7 +106,7 @@ class Profile extends React.Component {
                                 <h3>User Profile</h3>
                                 <div className='privateInfo'>
                                     <h4 style={{color: "#59576C", "font-weight": "bold", display: "inline"}}>Private Information </h4>
-                                    <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a>
+                                    {!this.props.match.params.profileid ? <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a>: null}
                                     {!this.props.match.params.profileid ? 
                                         <div>
                                             <h6>This information is only shown if you are friends with another player, or if you give permission to a new guest to see it.</h6>
@@ -119,10 +117,10 @@ class Profile extends React.Component {
                                     }
                                 </div>
                                 <h3 style={{display: "inline"}}>About {!this.props.match.params.profileid? "Me":"Them"}</h3>
-                                <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a>
+                                {!this.props.match.params.profileid ? <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a> : null}
                                 <p>{this.state.user.about_me}</p>
                                 <h3 style={{display: "inline"}}>As a Host </h3>
-                                <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a>
+                                {!this.props.match.params.profileid ? <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a> : null}
                                 <p>{this.state.user.as_host}</p>
                             </div>
                             <div>
@@ -139,9 +137,6 @@ class Profile extends React.Component {
                         <BoardgamesSubset boardgames={this.state.user.boardgames}/>
                     </div>
                 }
-                {/* <div className="grid-container">
-                    {this.loadBoardgames()}
-                </div> */}
             </div>
         )
     }

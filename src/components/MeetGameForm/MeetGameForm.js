@@ -50,7 +50,7 @@ export default function MeetGameForm(props){
         if(props.user) {
             return props.user.boardgames.map(boardgame => <div>
                 <BoardgameTile key={boardgame.id} id={boardgame.id} boardgame={boardgame} />
-                {!props.meet.brought_games.filter(brought_game => brought_game.boardgame.id === boardgame.id)[0] ? <button onClick={() => addGame(boardgame.id)}>Add Game</button> : null}
+                {!props.meet.brought_games.filter(brought_game => brought_game.boardgame.id === boardgame.id)[0] ? <button className="secondarybutton" onClick={() => addGame(boardgame.id)}>Add Game</button> : null}
             </div>)
         }
     }
@@ -66,7 +66,7 @@ export default function MeetGameForm(props){
           contentLabel="Example Modal"
         >
 
-            <h2 ref={_subtitle => (subtitle = _subtitle)}>Add to Meet</h2>
+            <h2 ref={_subtitle => (subtitle = _subtitle)}><h2>Add to Meet</h2></h2>
             <div className="grid-container">
                 {loadBoardgames()}
             </div>
