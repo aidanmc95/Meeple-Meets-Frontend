@@ -67,7 +67,7 @@ export default function MeetGameForm(props){
         >
 
             <h2 ref={_subtitle => (subtitle = _subtitle)}><h2>Add to Meet</h2></h2>
-            <div className="grid-container">
+            <div className="grid-container-meet">
                 {loadBoardgames()}
             </div>
         </Modal>

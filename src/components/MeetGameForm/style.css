@@ -36,7 +36,7 @@
     to {top: 0; opacity: 1}
   }
 
-.grid-container {
+.grid-container-meet {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
