@@ -8,8 +8,9 @@ textarea {
     resize: none;
 }
 
-.placesform {
-    margin: 0;
-    width: 100%;  
+.formPlaceInput {
+    position: relative;
+    height: 23px;
+
     z-index: 3;
 }
