@@ -117,11 +117,11 @@ class Profile extends React.Component {
                                     }
                                 </div>
                                 <h3 style={{display: "inline"}}>About {!this.props.match.params.profileid? "Me":"Them"}</h3>
-                                {!this.props.match.params.profileid ? <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a> : null}
-                                <p>{this.state.user.about_me}</p>
+                                {!this.props.match.params.profileid ? <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a> : null}<br/>
+                                <p>{this.state.user.about_me? this.state.user.about_me:"Nothing to know about me."}</p><br/>
                                 <h3 style={{display: "inline"}}>As a Host </h3>
-                                {!this.props.match.params.profileid ? <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a> : null}
-                                <p>{this.state.user.as_host}</p>
+                                {!this.props.match.params.profileid ? <a style={{display: "inline"}}><img src={process.env.PUBLIC_URL + '/edit.png'} alt="Edit" /></a> : null}<br/>
+                                <p>{this.state.user.as_host? this.state.user.as_host:"Nothing to know about me."}</p><br/>
                             </div>
                             <div>
                                 <h5>{!this.props.match.params.profileid? "Your":"Their"} Board Games</h5> 
