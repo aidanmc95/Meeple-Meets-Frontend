@@ -15,6 +15,7 @@ class Carousel extends React.Component {
                 active={2}
                 displayQuantityOfSide={3}
                 enableHeading={false}
+                enableScroll={false}
                 >
                     {this.loadImages()}
                 </Coverflow> : null}
